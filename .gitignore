@@ -7,8 +7,7 @@ build/
 dev-dist/
 *.tsbuildinfo
 
-# Variáveis de ambiente (nunca versionar segredos)
-.env
+# Variáveis de ambiente
 .env.local
 .env.*.local
 
