@@ -1,0 +1,53 @@
+# CardioRemoto — ambiente completo (API + Postgres) sem precisar de Postgres instalado na máquina.
+#
+#   docker compose up --build          → sobe Postgres + API (migra e faz seed no start)
+#   docker compose up postgres         → sobe SÓ o Postgres (para rodar a API fora do contêiner)
+#
+# A API escuta em 0.0.0.0 e a porta 3000 é publicada, então dá para acessar de outro
+# dispositivo na mesma rede Wi-Fi via http://<IP-do-PC>:3000 (veja o README).
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-cardio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cardio}
+      POSTGRES_DB: ${POSTGRES_DB:-cardioremoto}
+    ports:
+      - "5432:5432"
+    volumes:
+      - cardio_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cardio} -d ${POSTGRES_DB:-cardioremoto}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-cardio}:${POSTGRES_PASSWORD:-cardio}@postgres:5432/${POSTGRES_DB:-cardioremoto}?schema=public
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-troque-este-segredo-de-access}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-troque-este-segredo-de-refresh}
+      JWT_ACCESS_TTL: ${JWT_ACCESS_TTL:-15m}
+      JWT_REFRESH_TTL: ${JWT_REFRESH_TTL:-7d}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5173}
+      LOGIN_MAX_ATTEMPTS: ${LOGIN_MAX_ATTEMPTS:-5}
+      LOGIN_LOCK_MINUTES: ${LOGIN_LOCK_MINUTES:-15}
+    ports:
+      - "3000:3000"
+    # Aplica as migrations, roda o seed (idempotente) e sobe a API.
+    command: sh -c "npx prisma migrate deploy && npx tsx prisma/seed.ts && node dist/server.js"
+
+volumes:
+  cardio_pgdata:

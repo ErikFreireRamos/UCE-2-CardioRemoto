@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+</style>
+</helmet>
+
+<!-- ===================== 1 · LOGIN ===================== -->
+<div style="position:absolute; left:60px; top:40px; width:400px;">
+  <div data-drags-parent="1" style="margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;">
+    <div style="font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#0F5750;">01 · Login</div>
+    <div style="font-size:13px; color:#65788a; margin-top:3px; max-width:360px; line-height:1.5;">UC01 — Acesso do agente. Funciona offline com dados locais.</div>
+  </div>
+  <div style="width:400px; height:840px; background:#111418; border-radius:52px; padding:11px; box-shadow:0 30px 70px -20px rgba(20,40,60,.45);">
+    <div style="width:100%; height:100%; background:#0F5750; border-radius:42px; overflow:hidden; position:relative; font-family:'Plus Jakarta Sans',sans-serif;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 28px 8px; color:#fff;">
+        <span style="font-size:15px; font-weight:700;">9:41</span>
+        <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+        <span style="display:flex; gap:7px; align-items:center;">
+          <svg width="17" height="13" viewBox="0 0 17 13" fill="none"><path d="M1 4 A8 8 0 0 1 16 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="9" r="1.6" fill="#fff"/></svg>
+          <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+        </span>
+      </div>
+      <!-- brand -->
+      <div style="display:flex; flex-direction:column; align-items:center; padding:46px 0 30px; color:#fff;">
+        <div style="width:74px; height:74px; border-radius:22px; background:rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.2 1.3 4 2.5C10.8 6.3 12 5 14 5c3.5 0 5 4 3.5 7-.5.9-1.3 1.9-2.3 2.9" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 12.5H7l1.6-3.2L11 15l1.6-2.5h4" stroke="#7FE0CE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="font-family:'Newsreader',serif; font-size:34px; font-weight:600; margin-top:18px; letter-spacing:-.01em;">CardioRemoto</div>
+        <div style="font-size:13px; color:#A7D7CF; margin-top:4px; letter-spacing:.04em;">Ecossistema mare.IA · HULW</div>
+      </div>
+      <!-- sheet -->
+      <div style="position:absolute; left:0; right:0; bottom:0; background:#FAF5EE; border-radius:30px 30px 42px 42px; padding:28px 24px 30px;">
+        <div style="font-family:'Newsreader',serif; font-size:22px; font-weight:600; color:#23170E;">Entrar</div>
+        <div style="font-size:13px; color:#9A8C7C; margin-top:3px;">Use suas credenciais da unidade.</div>
+        <div style="margin-top:22px;">
+          <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">CPF / usuário</div>
+          <div style="display:flex; align-items:center; gap:10px; background:#fff; border:1.5px solid #ECE3D6; border-radius:13px; padding:14px 14px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="#9A8C7C" stroke-width="1.6"/><path d="M5 19a7 7 0 0 1 14 0" stroke="#9A8C7C" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <span style="font-size:15px; color:#23170E;">sandra.lima</span>
+          </div>
+        </div>
+        <div style="margin-top:15px;">
+          <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Senha</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; background:#fff; border:1.5px solid #ECE3D6; border-radius:13px; padding:14px 14px;">
+            <span style="font-size:18px; color:#23170E; letter-spacing:3px;">••••••••</span>
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="#9A8C7C" stroke-width="1.6"/><circle cx="12" cy="12" r="2.6" stroke="#9A8C7C" stroke-width="1.6"/></svg>
+          </div>
+        </div>
+        <div style="text-align:right; font-size:12.5px; font-weight:600; color:#0F5750; margin-top:11px;">Esqueci minha senha</div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; background:#0F5750; color:#fff; padding:16px 0; border-radius:14px; font-size:15px; font-weight:700; margin-top:16px;">
+          Entrar
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:7px; margin-top:18px; color:#7C8F6F;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 15a4 4 0 0 1 4-4 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 19 15" stroke="#5B8A52" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <span style="font-size:12px; font-weight:600;">Funciona offline · dados salvos no aparelho</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 2 · LISTA ===================== -->
+<div style="position:absolute; left:540px; top:40px; width:400px;">
+  <div data-drags-parent="1" style="margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;">
+    <div style="font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#0F5750;">02 · Lista de pacientes</div>
+    <div style="font-size:13px; color:#65788a; margin-top:3px; max-width:360px; line-height:1.5;">UC03/UC04 — Filtro por risco e ordem por prioridade de visita. Tela inicial.</div>
+  </div>
+  <div style="width:400px; height:946px; background:#111418; border-radius:52px; padding:11px; box-shadow:0 30px 70px -20px rgba(20,40,60,.45);">
+    <div style="width:100%; height:100%; background:#FAF5EE; border-radius:42px; overflow:hidden; position:relative; font-family:'Plus Jakarta Sans',sans-serif;">
+      <div style="background:#0F5750; padding:16px 24px 22px; border-radius:0 0 28px 28px; color:#fff;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:15px; font-weight:700;">9:41</span>
+          <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+          <span style="display:flex; gap:7px; align-items:center;">
+            <svg width="17" height="13" viewBox="0 0 17 13" fill="none"><path d="M1 4 A8 8 0 0 1 16 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="9" r="1.6" fill="#fff"/></svg>
+            <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+          </span>
+        </div>
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-top:16px;">
+          <div>
+            <div style="font-family:'Newsreader',serif; font-size:30px; font-weight:500; letter-spacing:-.01em;">Pacientes</div>
+            <div style="font-size:13px; color:#A7D7CF; font-weight:500; margin-top:3px;">Sandra · ACS · Equipe 04</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; background:rgba(255,255,255,.14); color:#C8EBE4; padding:7px 12px; border-radius:999px; font-size:12px; font-weight:600;">
+            <span style="width:7px; height:7px; border-radius:50%; background:#7FE0CE;"></span>Offline
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:18px;">
+          <div style="padding:8px 16px; border-radius:999px; background:#fff; color:#0F5750; font-size:13px; font-weight:700;">Todos</div>
+          <div style="display:flex; align-items:center; gap:6px; padding:8px 13px; border-radius:999px; background:rgba(255,255,255,.12); color:#E6F2EF; font-size:13px; font-weight:600;"><span style="width:9px; height:9px; border-radius:50%; background:#5FD39A;"></span>Verde</div>
+          <div style="display:flex; align-items:center; gap:6px; padding:8px 13px; border-radius:999px; background:rgba(255,255,255,.12); color:#E6F2EF; font-size:13px; font-weight:600;"><span style="width:9px; height:9px; border-radius:50%; background:#FFC53D;"></span>Amarelo</div>
+          <div style="display:flex; align-items:center; gap:6px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.12); color:#E6F2EF; font-size:13px; font-weight:600;"><span style="width:9px; height:9px; border-radius:50%; background:#FF7A6B;"></span>Verm.</div>
+        </div>
+      </div>
+      <div style="padding:14px 18px 2px;">
+        <div style="display:flex; align-items:center; gap:10px; background:#fff; border:1.5px solid #ECE3D6; border-radius:13px; padding:12px 14px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#9A8C7C" stroke-width="1.8"/><path d="M20 20l-3.5-3.5" stroke="#9A8C7C" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span style="font-size:14px; color:#B6A998;">Buscar por nome ou CPF…</span>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:11px 22px 9px;">
+        <span style="font-size:12px; font-weight:600; color:#9A8C7C;">Ordenado por <span style="color:#0F5750; font-weight:700;">prioridade de visita</span></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 4v16M7 20l-3-3M7 20l3-3M17 20V4M17 4l-3 3M17 4l3 3" stroke="#B6A998" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div style="padding:0 18px; display:flex; flex-direction:column; gap:11px;">
+        <!-- Tiago -->
+        <div style="background:#fff; border-radius:18px; padding:15px; box-shadow:0 4px 16px -8px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:center; gap:13px;">
+            <div style="width:46px; height:46px; border-radius:14px; background:#FBEDEC; color:#C7322B; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:600; font-family:'Newsreader',serif; flex-shrink:0;">TF</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-family:'Newsreader',serif; font-size:19px; font-weight:600; color:#23170E;">Tiago Feitosa</div>
+              <div style="font-size:12.5px; color:#9A8C7C; font-weight:500;">61 anos · Masculino</div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+              <span style="display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#C7322B;"><span style="width:10px; height:10px; border-radius:50%; background:#DC2626;"></span>Vermelho</span>
+              <span style="font-size:12px; font-weight:700; color:#C7322B; background:#FBEDEC; padding:3px 9px; border-radius:7px;">Visita hoje</span>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; margin-top:12px; background:#FCF1F0; border:1px solid #F6DAD7; border-radius:12px; padding:9px 12px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M12 8v5M12 16.5v.5" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#DC2626" stroke-width="1.7"/></svg>
+            <span style="font-size:13px; color:#9B3A33; font-weight:500;">PA <b style="color:#C7322B; font-weight:700;">184/121</b> mmHg — crítico</span>
+          </div>
+        </div>
+        <!-- José -->
+        <div style="background:#fff; border-radius:18px; padding:15px; box-shadow:0 4px 16px -8px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:center; gap:13px;">
+            <div style="width:46px; height:46px; border-radius:14px; background:#FBF3DF; color:#9A6B00; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:600; font-family:'Newsreader',serif; flex-shrink:0;">JN</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-family:'Newsreader',serif; font-size:19px; font-weight:600; color:#23170E;">José Nunes</div>
+              <div style="font-size:12.5px; color:#9A8C7C; font-weight:500;">67 anos · Masculino</div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+              <span style="display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#9A6B00;"><span style="width:10px; height:10px; border-radius:50%; background:#E6A100;"></span>Amarelo</span>
+              <span style="font-size:12px; font-weight:700; color:#9A6B00; background:#FBF3DF; padding:3px 9px; border-radius:7px;">1 dia atrasado</span>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; margin-top:12px; background:#FCF7EA; border:1px solid #F0E3C2; border-radius:12px; padding:9px 12px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M12 8v5M12 16.5v.5" stroke="#C68A00" stroke-width="2" stroke-linecap="round"/><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#C68A00" stroke-width="1.7"/></svg>
+            <span style="font-size:13px; color:#806012; font-weight:500;">LDL <b style="color:#9A6B00; font-weight:700;">196</b> mg/dL — atenção</span>
+          </div>
+        </div>
+        <!-- Carla -->
+        <div style="background:#fff; border-radius:18px; padding:15px; box-shadow:0 4px 16px -8px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:center; gap:13px;">
+            <div style="width:46px; height:46px; border-radius:14px; background:#E6F4EA; color:#1B7A3E; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:600; font-family:'Newsreader',serif; flex-shrink:0;">CN</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-family:'Newsreader',serif; font-size:19px; font-weight:600; color:#23170E;">Carla Nascimento</div>
+              <div style="font-size:12.5px; color:#9A8C7C; font-weight:500;">49 anos · Feminino</div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+              <span style="display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#1B7A3E;"><span style="width:10px; height:10px; border-radius:50%; background:#16A34A;"></span>Verde</span>
+              <span style="font-size:12px; font-weight:600; color:#9A8C7C; background:#F2EAE0; padding:3px 9px; border-radius:7px;">4 dias p/ visita</span>
+            </div>
+          </div>
+          <div style="display:flex; gap:9px; margin-top:12px;">
+            <div style="flex:1; text-align:center; padding:10px 0; border-radius:12px; background:#0F5750; color:#fff; font-size:13px; font-weight:700;">+ Nova visita</div>
+            <div style="flex:1; text-align:center; padding:10px 0; border-radius:12px; background:#F2EAE0; color:#0F5750; font-size:13px; font-weight:700;">Evolução</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute; right:22px; bottom:26px; width:60px; height:60px; border-radius:50%; background:#E2725B; display:flex; align-items:center; justify-content:center; box-shadow:0 14px 26px -8px rgba(226,114,91,.7);">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 3 · CADASTRAR PACIENTE ===================== -->
+<div style="position:absolute; left:1020px; top:40px; width:400px;">
+  <div data-drags-parent="1" style="margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;">
+    <div style="font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#0F5750;">03 · Cadastrar paciente</div>
+    <div style="font-size:13px; color:#65788a; margin-top:3px; max-width:360px; line-height:1.5;">UC02 — Idade calculada da data de nascimento. Campos por toque, sem digitação livre onde possível.</div>
+  </div>
+  <div style="width:400px; height:1040px; background:#111418; border-radius:52px; padding:11px; box-shadow:0 30px 70px -20px rgba(20,40,60,.45);">
+    <div style="width:100%; height:100%; background:#FAF5EE; border-radius:42px; overflow:hidden; position:relative; font-family:'Plus Jakarta Sans',sans-serif;">
+      <div style="background:#0F5750; padding:16px 22px 20px; border-radius:0 0 26px 26px; color:#fff;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:15px; font-weight:700;">9:41</span>
+          <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+          <span style="display:flex; gap:7px; align-items:center;">
+            <svg width="17" height="13" viewBox="0 0 17 13" fill="none"><path d="M1 4 A8 8 0 0 1 16 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="9" r="1.6" fill="#fff"/></svg>
+            <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+          </span>
+        </div>
+        <div style="display:flex; align-items:center; gap:13px; margin-top:14px;">
+          <div style="width:36px; height:36px; border-radius:11px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="font-family:'Newsreader',serif; font-size:24px; font-weight:500;">Novo paciente</div>
+        </div>
+      </div>
+      <div style="padding:18px 20px; display:flex; flex-direction:column; gap:16px;">
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">CPF (identificação)</div>
+          <div style="background:#fff; border:1.5px solid #ECE3D6; border-radius:12px; padding:13px 14px; font-size:15px; color:#23170E;">041.882.314-07</div>
+        </div>
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Nome social</div>
+          <div style="background:#fff; border:1.5px solid #ECE3D6; border-radius:12px; padding:13px 14px; font-size:15px; color:#23170E;">Maria Silva</div>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <div style="flex:1;">
+            <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Data de nascimento</div>
+            <div style="background:#fff; border:1.5px solid #ECE3D6; border-radius:12px; padding:13px 14px; font-size:15px; color:#23170E;">14/03/1968</div>
+          </div>
+          <div style="width:96px;">
+            <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Idade</div>
+            <div style="background:#EDF3F0; border:1.5px solid #D5E6DF; border-radius:12px; padding:13px 0; text-align:center; font-size:15px; font-weight:700; color:#0F5750;">58</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Sexo biológico</div>
+          <div style="display:flex; background:#F2EAE0; border-radius:12px; padding:4px; gap:4px;">
+            <div style="flex:1; text-align:center; padding:11px 0; border-radius:9px; background:#0F5750; color:#fff; font-size:13px; font-weight:700;">Feminino</div>
+            <div style="flex:1; text-align:center; padding:11px 0; color:#6B5E50; font-size:13px; font-weight:600;">Masculino</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Tabagismo</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">Fumante</div>
+            <div style="padding:9px 14px; border-radius:999px; background:#0F5750; color:#fff; font-size:13px; font-weight:700;">Ex-fumante</div>
+            <div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">Não fumante</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Nível de atividade física</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">Não pratica</div>
+            <div style="padding:9px 14px; border-radius:999px; background:#0F5750; color:#fff; font-size:13px; font-weight:700;">Raramente</div>
+            <div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">Regularmente</div>
+            <div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">Frequentemente</div>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; background:#fff; border:1.5px solid #ECE3D6; border-radius:12px; padding:13px 15px;">
+          <span style="font-size:14px; font-weight:600; color:#23170E;">Uso de estatina</span>
+          <div style="display:flex; background:#F2EAE0; border-radius:9px; padding:3px; gap:3px;">
+            <div style="padding:7px 16px; border-radius:7px; background:#0F5750; color:#fff; font-size:13px; font-weight:700;">Sim</div>
+            <div style="padding:7px 16px; border-radius:7px; color:#6B5E50; font-size:13px; font-weight:600;">Não</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Histórico de evento cardiovascular</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">Não</div>
+            <div style="padding:9px 14px; border-radius:999px; background:#FBEDEC; border:1.5px solid #F0C7C3; color:#C7322B; font-size:13px; font-weight:700;">IAM</div>
+            <div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">AVC</div>
+            <div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">DAP</div>
+            <div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">Outro</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute; left:0; right:0; bottom:0; padding:14px 20px 24px; background:linear-gradient(transparent, #FAF5EE 26%);">
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; background:#0F5750; color:#fff; padding:16px 0; border-radius:14px; font-size:15px; font-weight:700;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Salvar paciente
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 4 · NOVA VISITA ===================== -->
+<div style="position:absolute; left:1500px; top:40px; width:400px;">
+  <div data-drags-parent="1" style="margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;">
+    <div style="font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#0F5750;">04 · Nova visita</div>
+    <div style="font-size:13px; color:#65788a; margin-top:3px; max-width:360px; line-height:1.5;">UC05 — Três grupos de dados. Valores anormais geram alerta na hora da digitação.</div>
+  </div>
+  <div style="width:400px; height:1060px; background:#111418; border-radius:52px; padding:11px; box-shadow:0 30px 70px -20px rgba(20,40,60,.45);">
+    <div style="width:100%; height:100%; background:#FAF5EE; border-radius:42px; overflow:hidden; position:relative; font-family:'Plus Jakarta Sans',sans-serif;">
+      <div style="background:#0F5750; padding:16px 22px 18px; border-radius:0 0 26px 26px; color:#fff;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:15px; font-weight:700;">9:41</span>
+          <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+          <span style="display:flex; gap:7px; align-items:center;">
+            <svg width="17" height="13" viewBox="0 0 17 13" fill="none"><path d="M1 4 A8 8 0 0 1 16 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="9" r="1.6" fill="#fff"/></svg>
+            <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+          </span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; margin-top:14px;">
+          <div style="width:36px; height:36px; border-radius:11px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:'Newsreader',serif; font-size:22px; font-weight:500; line-height:1.1;">Nova visita</div>
+            <div style="font-size:12.5px; color:#A7D7CF; margin-top:2px;">Maria Silva · 58a · Hoje 14:32</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:16px 18px; display:flex; flex-direction:column; gap:13px;">
+        <!-- Antropométricos -->
+        <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:center; gap:9px; margin-bottom:13px;">
+            <div style="width:30px; height:30px; border-radius:9px; background:#EDF3F0; display:flex; align-items:center; justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#0F5750" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+            <span style="font-size:14px; font-weight:700; color:#23170E;">Antropométricos</span>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">PESO (kg)</div><div style="background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E;">72,5</div></div>
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">ALTURA (cm)</div><div style="background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E;">158</div></div>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:10px;">
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">IMC (auto)</div><div style="background:#EDF3F0; border:1.5px solid #D5E6DF; border-radius:10px; padding:11px 12px; font-size:15px; font-weight:700; color:#0F5750;">29,0</div></div>
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">CINTURA (cm)</div><div style="background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E;">94</div></div>
+          </div>
+        </div>
+        <!-- Vitais -->
+        <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:center; gap:9px; margin-bottom:13px;">
+            <div style="width:30px; height:30px; border-radius:9px; background:#FBEDEC; display:flex; align-items:center; justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-5 3 9 2-4h7" stroke="#C7322B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span style="font-size:14px; font-weight:700; color:#23170E;">Medições vitais</span>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">PA SISTÓLICA</div><div style="background:#FFF5F4; border:1.5px solid #E9A39C; border-radius:10px; padding:11px 12px; font-size:15px; font-weight:700; color:#C7322B;">184</div></div>
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">PA DIASTÓLICA</div><div style="background:#FFF5F4; border:1.5px solid #E9A39C; border-radius:10px; padding:11px 12px; font-size:15px; font-weight:700; color:#C7322B;">121</div></div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; margin-top:10px; background:#FCEEEC; border:1px solid #F2C9C4; border-radius:11px; padding:9px 12px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M12 8v5M12 16.5v.5" stroke="#C7322B" stroke-width="2" stroke-linecap="round"/><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#C7322B" stroke-width="1.7"/></svg>
+            <span style="font-size:12.5px; color:#9B2C24; font-weight:600;">Alerta vermelho — PA ≥ 180/120 mmHg</span>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:10px;">
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">FREQ. CARDÍACA</div><div style="background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E;">78</div></div>
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">GLICEMIA CAP.</div><div style="background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E;">132</div></div>
+          </div>
+        </div>
+        <!-- Exames laboratoriais (collapsed-ish) -->
+        <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:13px;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <div style="width:30px; height:30px; border-radius:9px; background:#FBF3DF; display:flex; align-items:center; justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 3v6L5 18a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-4-9V3" stroke="#9A6B00" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 3h6" stroke="#9A6B00" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+              <span style="font-size:14px; font-weight:700; color:#23170E;">Exames laboratoriais</span>
+            </div>
+            <span style="font-size:11px; font-weight:600; color:#9A8C7C;">14 campos</span>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">GLICOSE JEJUM</div><div style="background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E;">108</div></div>
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">HbA1c (%)</div><div style="background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E;">6,9</div></div>
+          </div>
+          <div style="display:flex; gap:10px; margin-top:10px;">
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">LDL</div><div style="background:#FFFBF0; border:1.5px solid #E6CE94; border-radius:10px; padding:11px 12px; font-size:15px; font-weight:700; color:#9A6B00;">196</div></div>
+            <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">HDL</div><div style="background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E;">41</div></div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; margin-top:10px; background:#FCF7EA; border:1px solid #ECDCAE; border-radius:11px; padding:9px 12px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M12 8v5M12 16.5v.5" stroke="#C68A00" stroke-width="2" stroke-linecap="round"/><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#C68A00" stroke-width="1.7"/></svg>
+            <span style="font-size:12.5px; color:#806012; font-weight:600;">Alerta amarelo — LDL ≥ 190 mg/dL</span>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-top:12px; color:#0F5750; font-size:13px; font-weight:700;">
+            Ver os 10 campos restantes
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#0F5750" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute; left:0; right:0; bottom:0; padding:12px 18px 22px; background:linear-gradient(transparent, #FAF5EE 30%);">
+        <div style="font-size:11.5px; color:#9A8C7C; text-align:center; margin-bottom:9px;">Preencha ao menos um campo para registrar.</div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; background:#0F5750; color:#fff; padding:16px 0; border-radius:14px; font-size:15px; font-weight:700;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Salvar visita
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 5 · EVOLUÇÃO (small multiples) ===================== -->
+<div style="position:absolute; left:60px; top:1240px; width:400px;">
+  <div data-drags-parent="1" style="margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;">
+    <div style="font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#0F5750;">05 · Evolução clínica <span style="color:#E2725B;">— small multiples</span></div>
+    <div style="font-size:13px; color:#65788a; margin-top:3px; max-width:360px; line-height:1.5;">UC06 — Cada parâmetro na sua escala real: meta, faixa de controle, tendência, variação e valor por ponto. Alinhados no tempo.</div>
+  </div>
+  <div style="width:400px; height:1760px; background:#111418; border-radius:52px; padding:11px; box-shadow:0 30px 70px -20px rgba(20,40,60,.45);">
+    <div style="width:100%; height:100%; background:#FAF5EE; border-radius:42px; overflow:hidden; position:relative; font-family:'Plus Jakarta Sans',sans-serif;">
+      <div style="background:#0F5750; padding:16px 22px 18px; border-radius:0 0 26px 26px; color:#fff;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:15px; font-weight:700;">9:41</span>
+          <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+          <span style="display:flex; gap:7px; align-items:center;">
+            <svg width="17" height="13" viewBox="0 0 17 13" fill="none"><path d="M1 4 A8 8 0 0 1 16 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="9" r="1.6" fill="#fff"/></svg>
+            <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+          </span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; margin-top:14px;">
+          <div style="width:36px; height:36px; border-radius:11px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:'Newsreader',serif; font-size:22px; font-weight:500; line-height:1.1;">Evolução</div>
+            <div style="font-size:12.5px; color:#A7D7CF; margin-top:2px;">Maria Silva · últimos 5 registros</div>
+          </div>
+        </div>
+        <div style="display:flex; background:rgba(255,255,255,.12); border-radius:11px; padding:4px; gap:4px; margin-top:15px;">
+          <div style="flex:1; text-align:center; padding:8px 0; border-radius:8px; background:#fff; color:#0F5750; font-size:13px; font-weight:700;">Gráfico</div>
+          <div style="flex:1; text-align:center; padding:8px 0; color:#D8F0EB; font-size:13px; font-weight:600;">Tabela</div>
+        </div>
+      </div>
+      <div style="padding:13px 16px 16px; display:flex; flex-direction:column; gap:11px;">
+
+        <!-- classification summary -->
+        <div style="display:flex; align-items:center; gap:11px; background:#FCF1F0; border:1px solid #F2C9C4; border-radius:14px; padding:12px 14px;">
+          <span style="width:12px; height:12px; border-radius:50%; background:#DC2626; flex-shrink:0;"></span>
+          <div style="flex:1;">
+            <div style="font-size:13.5px; font-weight:700; color:#9B2C24;">Não controlado · Vermelho</div>
+            <div style="font-size:11.5px; color:#9B3A33; margin-top:2px;">2 parâmetros fora da meta: <b>PA sistólica</b> e <b>LDL</b></div>
+          </div>
+        </div>
+
+        <!-- metric selector -->
+        <div>
+          <div style="display:flex; flex-wrap:wrap; gap:7px;">
+            <span style="display:flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; font-size:12px; font-weight:700; color:#23170E;"><span style="width:9px; height:9px; border-radius:50%; background:#DC2626;"></span>Pressão</span>
+            <span style="display:flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; font-size:12px; font-weight:700; color:#23170E;"><span style="width:9px; height:9px; border-radius:50%; background:#E2725B;"></span>Glicemia</span>
+            <span style="display:flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; font-size:12px; font-weight:700; color:#23170E;"><span style="width:9px; height:9px; border-radius:50%; background:#C68A00;"></span>HbA1c</span>
+            <span style="display:flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; font-size:12px; font-weight:700; color:#23170E;"><span style="width:9px; height:9px; border-radius:50%; background:#9A6B00;"></span>LDL</span>
+            <span style="display:flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; font-size:12px; font-weight:700; color:#23170E;"><span style="width:9px; height:9px; border-radius:50%; background:#0F5750;"></span>Peso</span>
+            <span style="padding:7px 12px; border-radius:999px; background:#F2EAE0; font-size:12px; font-weight:600; color:#9A8C7C;">Cintura</span>
+            <span style="padding:7px 12px; border-radius:999px; background:#F2EAE0; font-size:12px; font-weight:600; color:#9A8C7C;">FC</span>
+            <span style="padding:7px 12px; border-radius:999px; background:#F2EAE0; font-size:12px; font-weight:600; color:#9A8C7C;">+6</span>
+          </div>
+          <div style="font-size:11px; color:#9A8C7C; margin-top:8px;">Toque numa medida para mostrar ou ocultar do painel.</div>
+        </div>
+
+        <!-- CARD: Pressão arterial -->
+        <div style="background:#fff; border-radius:16px; padding:14px; box-shadow:0 4px 14px -10px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+            <div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:10px; height:10px; border-radius:3px; background:#DC2626;"></span><span style="font-size:14px; font-weight:700; color:#23170E;">Pressão arterial</span></div>
+              <div style="font-size:11.5px; color:#9A8C7C; margin-top:3px;">mmHg · meta &lt; 140/90</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:21px; font-weight:800; color:#C7322B; line-height:1;">142/88</div>
+              <span style="display:inline-block; margin-top:5px; font-size:10px; font-weight:700; color:#C7322B; background:#FBEDEC; padding:3px 8px; border-radius:6px;">acima da meta</span>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; margin:10px 0 4px; font-size:11.5px; color:#5A4E42;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 17H9M17 17V9" stroke="#1B7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Sistólica <b style="color:#1B7A3E;">−26 mmHg</b> desde 02/01 · em melhora
+          </div>
+          <svg width="100%" height="118" viewBox="0 0 300 124" preserveAspectRatio="none">
+            <line x1="0" y1="57.2" x2="300" y2="57.2" stroke="#E7B4AE" stroke-width="1" stroke-dasharray="4 4"/>
+            <line x1="0" y1="101.2" x2="300" y2="101.2" stroke="#E7B4AE" stroke-width="1" stroke-dasharray="4 4"/>
+            <text x="298" y="54" text-anchor="end" font-size="8" fill="#CDA29C">meta 140</text>
+            <text x="298" y="98" text-anchor="end" font-size="8" fill="#CDA29C">meta 90</text>
+            <polyline points="24,88.9 89,92.4 154,95.9 219,99.4 284,103" fill="none" stroke="#EDA9A2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="24,32.6 89,39.6 154,46.6 219,51.9 284,55.4" fill="none" stroke="#DC2626" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#DC2626"><circle cx="24" cy="32.6" r="3"/><circle cx="89" cy="39.6" r="3"/><circle cx="154" cy="46.6" r="3"/><circle cx="219" cy="51.9" r="3"/><circle cx="284" cy="55.4" r="3.7"/></g>
+            <g fill="#EDA9A2"><circle cx="24" cy="88.9" r="2.4"/><circle cx="89" cy="92.4" r="2.4"/><circle cx="154" cy="95.9" r="2.4"/><circle cx="219" cy="99.4" r="2.4"/><circle cx="284" cy="103" r="2.8"/></g>
+            <g font-size="9" font-weight="700" fill="#C7322B" text-anchor="middle"><text x="24" y="26">168</text><text x="89" y="33">160</text><text x="154" y="40">152</text><text x="219" y="45.5">146</text><text x="284" y="49">142</text></g>
+          </svg>
+          <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#9A8C7C; font-weight:600; margin-top:4px;">
+            <span>Sist. mín 142 · máx 168 mmHg</span><span>Última: 14/04 · há 3 dias</span>
+          </div>
+        </div>
+
+        <!-- CARD: Glicemia capilar -->
+        <div style="background:#fff; border-radius:16px; padding:14px; box-shadow:0 4px 14px -10px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+            <div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:10px; height:10px; border-radius:3px; background:#E2725B;"></span><span style="font-size:14px; font-weight:700; color:#23170E;">Glicemia capilar</span></div>
+              <div style="font-size:11.5px; color:#9A8C7C; margin-top:3px;">mg/dL · meta &lt; 180 · alerta ≥250 / &lt;70</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:21px; font-weight:800; color:#1B7A3E; line-height:1;">150</div>
+              <span style="display:inline-block; margin-top:5px; font-size:10px; font-weight:700; color:#1B7A3E; background:#E6F4EA; padding:3px 8px; border-radius:6px;">na meta</span>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; margin:10px 0 4px; font-size:11.5px; color:#5A4E42;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 17H9M17 17V9" stroke="#1B7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <b style="color:#1B7A3E;">−60 mg/dL</b> desde 02/01 · entrou na meta em 14/04
+          </div>
+          <svg width="100%" height="118" viewBox="0 0 300 124" preserveAspectRatio="none">
+            <rect x="0" y="72.3" width="300" height="40" fill="#EAF6EE"/>
+            <line x1="0" y1="72.3" x2="300" y2="72.3" stroke="#9FD3B0" stroke-width="1" stroke-dasharray="4 4"/>
+            <text x="298" y="69" text-anchor="end" font-size="8" fill="#7FB793">meta 180</text>
+            <polyline points="24,53.4 89,62.2 154,71 219,79.8 284,91.1" fill="none" stroke="#E2725B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#E2725B"><circle cx="24" cy="53.4" r="3"/><circle cx="89" cy="62.2" r="3"/><circle cx="154" cy="71" r="3"/><circle cx="219" cy="79.8" r="3"/><circle cx="284" cy="91.1" r="3.7"/></g>
+            <g font-size="9" font-weight="700" fill="#C0573F" text-anchor="middle"><text x="24" y="47">210</text><text x="89" y="56">196</text><text x="154" y="64.5">182</text><text x="219" y="73.5">168</text><text x="284" y="85">150</text></g>
+          </svg>
+          <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#9A8C7C; font-weight:600; margin-top:4px;">
+            <span>mín 150 · máx 210 mg/dL</span><span>Última: 14/04 · há 3 dias</span>
+          </div>
+        </div>
+
+        <!-- CARD: HbA1c -->
+        <div style="background:#fff; border-radius:16px; padding:14px; box-shadow:0 4px 14px -10px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+            <div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:10px; height:10px; border-radius:3px; background:#C68A00;"></span><span style="font-size:14px; font-weight:700; color:#23170E;">Hemoglobina glicada</span></div>
+              <div style="font-size:11.5px; color:#9A8C7C; margin-top:3px;">HbA1c (%) · meta &lt; 7,0</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:21px; font-weight:800; color:#1B7A3E; line-height:1;">6,9</div>
+              <span style="display:inline-block; margin-top:5px; font-size:10px; font-weight:700; color:#1B7A3E; background:#E6F4EA; padding:3px 8px; border-radius:6px;">na meta (limite)</span>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; margin:10px 0 4px; font-size:11.5px; color:#5A4E42;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 17H9M17 17V9" stroke="#1B7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <b style="color:#1B7A3E;">−1,5 ponto</b> desde 02/01 · controle melhorando
+          </div>
+          <svg width="100%" height="118" viewBox="0 0 300 124" preserveAspectRatio="none">
+            <rect x="0" y="80.7" width="300" height="32" fill="#EAF6EE"/>
+            <line x1="0" y1="80.7" x2="300" y2="80.7" stroke="#9FD3B0" stroke-width="1" stroke-dasharray="4 4"/>
+            <text x="298" y="77.5" text-anchor="end" font-size="8" fill="#7FB793">meta 7,0</text>
+            <polyline points="24,39.6 89,51.3 154,63.1 219,74.8 284,83.6" fill="none" stroke="#C68A00" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#C68A00"><circle cx="24" cy="39.6" r="3"/><circle cx="89" cy="51.3" r="3"/><circle cx="154" cy="63.1" r="3"/><circle cx="219" cy="74.8" r="3"/><circle cx="284" cy="83.6" r="3.7"/></g>
+            <g font-size="9" font-weight="700" fill="#9A6B00" text-anchor="middle"><text x="24" y="33">8,4</text><text x="89" y="45">8,0</text><text x="154" y="56.5">7,6</text><text x="219" y="68.5">7,2</text><text x="284" y="77">6,9</text></g>
+          </svg>
+          <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#9A8C7C; font-weight:600; margin-top:4px;">
+            <span>mín 6,9 · máx 8,4 %</span><span>Última: 14/04 · laboratório</span>
+          </div>
+        </div>
+
+        <!-- CARD: LDL -->
+        <div style="background:#fff; border-radius:16px; padding:14px; box-shadow:0 4px 14px -10px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+            <div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:10px; height:10px; border-radius:3px; background:#9A6B00;"></span><span style="font-size:14px; font-weight:700; color:#23170E;">Colesterol LDL</span></div>
+              <div style="font-size:11.5px; color:#9A8C7C; margin-top:3px;">mg/dL · meta &lt; 130 · alerta ≥190</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:21px; font-weight:800; color:#9A6B00; line-height:1;">160</div>
+              <span style="display:inline-block; margin-top:5px; font-size:10px; font-weight:700; color:#9A6B00; background:#FBF3DF; padding:3px 8px; border-radius:6px;">acima da meta</span>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; margin:10px 0 4px; font-size:11.5px; color:#5A4E42;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 17H9M17 17V9" stroke="#1B7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <b style="color:#1B7A3E;">−36 mg/dL</b> desde 02/01 · ainda 30 acima da meta
+          </div>
+          <svg width="100%" height="118" viewBox="0 0 300 124" preserveAspectRatio="none">
+            <rect x="0" y="100.2" width="300" height="12" fill="#EAF6EE"/>
+            <line x1="0" y1="100.2" x2="300" y2="100.2" stroke="#9FD3B0" stroke-width="1" stroke-dasharray="4 4"/>
+            <text x="298" y="97" text-anchor="end" font-size="8" fill="#7FB793">meta 130</text>
+            <polyline points="24,35.7 89,43.5 154,53.3 219,63.1 284,70.9" fill="none" stroke="#9A6B00" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#9A6B00"><circle cx="24" cy="35.7" r="3"/><circle cx="89" cy="43.5" r="3"/><circle cx="154" cy="53.3" r="3"/><circle cx="219" cy="63.1" r="3"/><circle cx="284" cy="70.9" r="3.7"/></g>
+            <g font-size="9" font-weight="700" fill="#8A6200" text-anchor="middle"><text x="24" y="29">196</text><text x="89" y="37">188</text><text x="154" y="47">178</text><text x="219" y="56.5">168</text><text x="284" y="64.5">160</text></g>
+          </svg>
+          <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#9A8C7C; font-weight:600; margin-top:4px;">
+            <span>mín 160 · máx 196 mg/dL</span><span>Última: 14/04 · laboratório</span>
+          </div>
+        </div>
+
+        <!-- CARD: Peso / IMC -->
+        <div style="background:#fff; border-radius:16px; padding:14px; box-shadow:0 4px 14px -10px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+            <div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:10px; height:10px; border-radius:3px; background:#0F5750;"></span><span style="font-size:14px; font-weight:700; color:#23170E;">Peso e IMC</span></div>
+              <div style="font-size:11.5px; color:#9A8C7C; margin-top:3px;">kg · IMC alvo &lt; 25 (sobrepeso 25–29,9)</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:21px; font-weight:800; color:#0F5750; line-height:1;">72,5</div>
+              <span style="display:inline-block; margin-top:5px; font-size:10px; font-weight:700; color:#0F5750; background:#EDF3F0; padding:3px 8px; border-radius:6px;">IMC 29,0</span>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; margin:10px 0 4px; font-size:11.5px; color:#5A4E42;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M7 7l10 10M17 17H9M17 17V9" stroke="#1B7A3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <b style="color:#1B7A3E;">−5,5 kg</b> desde 02/01 · IMC 31,2 → 29,0
+          </div>
+          <svg width="100%" height="108" viewBox="0 0 300 114" preserveAspectRatio="none">
+            <polyline points="24,39.6 89,57.2 154,70.4 219,83.6 284,88" fill="none" stroke="#0F5750" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#0F5750"><circle cx="24" cy="39.6" r="3"/><circle cx="89" cy="57.2" r="3"/><circle cx="154" cy="70.4" r="3"/><circle cx="219" cy="83.6" r="3"/><circle cx="284" cy="88" r="3.7"/></g>
+            <g font-size="9" font-weight="700" fill="#0F5750" text-anchor="middle"><text x="24" y="33">78,0</text><text x="89" y="50.5">76,0</text><text x="154" y="63.5">74,5</text><text x="219" y="77">73,0</text><text x="284" y="81">72,5</text></g>
+          </svg>
+          <div style="display:flex; justify-content:space-between; font-size:10.5px; color:#9A8C7C; font-weight:600; margin-top:4px;">
+            <span>mín 72,5 · máx 78,0 kg</span><span>Última: 14/04 · balança</span>
+          </div>
+        </div>
+
+        <!-- shared time axis -->
+        <div style="display:flex; justify-content:space-between; padding:0 6px; font-size:10.5px; color:#9A8C7C; font-weight:700;">
+          <span>02/01</span><span>16/02</span><span>30/03</span><span>14/04</span><span>hoje</span>
+        </div>
+
+        <!-- legend / interaction hint -->
+        <div style="display:flex; align-items:flex-start; gap:8px; background:#EDF3F0; border-radius:12px; padding:11px 13px;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:1px;"><circle cx="12" cy="12" r="9" stroke="#0F5750" stroke-width="1.7"/><path d="M12 11v5M12 7.5v.5" stroke="#0F5750" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span style="font-size:11.5px; color:#3C5A53; line-height:1.5;">Faixa verde = dentro da meta clínica. Toque num ponto para ver valor exato, data, origem (IoT / laboratório) e quem registrou.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 7 · SINCRONIZAÇÃO ===================== -->
+<div style="position:absolute; left:540px; top:1240px; width:400px;">
+  <div data-drags-parent="1" style="margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;">
+    <div style="font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#0F5750;">07 · Sincronização</div>
+    <div style="font-size:13px; color:#65788a; margin-top:3px; max-width:360px; line-height:1.5;">UC07 / RNF001 — Dados ficam locais e o agente sincroniza quando há internet.</div>
+  </div>
+  <div style="width:400px; height:860px; background:#111418; border-radius:52px; padding:11px; box-shadow:0 30px 70px -20px rgba(20,40,60,.45);">
+    <div style="width:100%; height:100%; background:#0F5750; border-radius:42px; overflow:hidden; position:relative; font-family:'Plus Jakarta Sans',sans-serif;">
+      <!-- dimmed list behind -->
+      <div style="position:absolute; inset:0; background:#FAF5EE; opacity:.34;"></div>
+      <div style="position:absolute; inset:0; background:rgba(15,35,30,.45);"></div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 28px 8px; color:#fff; position:relative;">
+        <span style="font-size:15px; font-weight:700;">9:41</span>
+        <div style="position:absolute; left:50%; top:1px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+        <span style="display:flex; gap:7px; align-items:center;">
+          <svg width="17" height="13" viewBox="0 0 17 13" fill="none"><path d="M1 4 A8 8 0 0 1 16 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="9" r="1.6" fill="#fff"/></svg>
+          <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+        </span>
+      </div>
+      <!-- bottom sheet -->
+      <div style="position:absolute; left:0; right:0; bottom:0; background:#FAF5EE; border-radius:30px 30px 42px 42px; padding:14px 22px 28px;">
+        <div style="width:42px; height:5px; border-radius:3px; background:#E2D8C8; margin:0 auto 18px;"></div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:46px; height:46px; border-radius:14px; background:#EDF3F0; display:flex; align-items:center; justify-content:center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8" stroke="#0F5750" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 4v4h-4" stroke="#0F5750" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16" stroke="#0F5750" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 20v-4h4" stroke="#0F5750" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:'Newsreader',serif; font-size:21px; font-weight:600; color:#23170E;">Sincronizar dados</div>
+            <div style="display:flex; align-items:center; gap:6px; font-size:12.5px; color:#1B7A3E; font-weight:600; margin-top:2px;"><span style="width:8px; height:8px; border-radius:50%; background:#16A34A;"></span>Online · conexão disponível</div>
+          </div>
+        </div>
+        <div style="background:#fff; border:1.5px solid #ECE3D6; border-radius:16px; padding:6px 4px; margin-top:18px;">
+          <div style="display:flex; align-items:center; gap:12px; padding:12px 13px; border-bottom:1px solid #F2EADE;">
+            <div style="width:34px; height:34px; border-radius:10px; background:#FBEDEC; color:#C7322B; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; font-family:'Newsreader',serif;">MS</div>
+            <div style="flex:1;"><div style="font-size:14px; font-weight:600; color:#23170E;">Maria Silva</div><div style="font-size:12px; color:#9A8C7C;">Nova visita · hoje 14:32</div></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#E2C9A0" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="#B6A998" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; padding:12px 13px; border-bottom:1px solid #F2EADE;">
+            <div style="width:34px; height:34px; border-radius:10px; background:#FBF3DF; color:#9A6B00; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; font-family:'Newsreader',serif;">JN</div>
+            <div style="flex:1;"><div style="font-size:14px; font-weight:600; color:#23170E;">José Nunes</div><div style="font-size:12px; color:#9A8C7C;">Nova visita · ontem 16:10</div></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#E2C9A0" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="#B6A998" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; padding:12px 13px;">
+            <div style="width:34px; height:34px; border-radius:10px; background:#EDF3F0; color:#0F5750; display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0F5750" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div style="flex:1;"><div style="font-size:14px; font-weight:600; color:#23170E;">Paciente novo</div><div style="font-size:12px; color:#9A8C7C;">Cadastro · hoje 11:05</div></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#E2C9A0" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="#B6A998" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:14px; padding:0 4px;">
+          <span style="font-size:13px; color:#5A4E42;"><b style="color:#23170E;">3 registros</b> pendentes</span>
+          <span style="font-size:12px; color:#9A8C7C;">Última: hoje 09:12</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:9px; background:#E2725B; color:#fff; padding:16px 0; border-radius:14px; font-size:15px; font-weight:700; margin-top:14px; box-shadow:0 12px 24px -10px rgba(226,114,91,.6);">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8M20 4v4h-4" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16M4 20v-4h4" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Sincronizar agora
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 08 · PERFIL DO PACIENTE ===================== -->
+<div style="position:absolute; left:1020px; top:1240px; width:400px;">
+  <div data-drags-parent="1" style="margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;">
+    <div style="font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#0F5750;">08 · Perfil do paciente</div>
+    <div style="font-size:13px; color:#65788a; margin-top:3px; max-width:360px; line-height:1.5;">Aberto ao iniciar uma visita (UC05) e pela lista. Fatores de risco, metas e histórico num só lugar.</div>
+  </div>
+  <div style="width:400px; height:980px; background:#111418; border-radius:52px; padding:11px; box-shadow:0 30px 70px -20px rgba(20,40,60,.45);">
+    <div style="width:100%; height:100%; background:#FAF5EE; border-radius:42px; overflow:hidden; position:relative; font-family:'Plus Jakarta Sans',sans-serif;">
+      <div style="background:#0F5750; padding:16px 22px 20px; border-radius:0 0 26px 26px; color:#fff;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:15px; font-weight:700;">9:41</span>
+          <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+          <span style="display:flex; gap:7px; align-items:center;">
+            <svg width="17" height="13" viewBox="0 0 17 13" fill="none"><path d="M1 4 A8 8 0 0 1 16 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="9" r="1.6" fill="#fff"/></svg>
+            <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+          </span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; margin-top:16px;">
+          <div style="width:36px; height:36px; border-radius:11px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="width:52px; height:52px; border-radius:16px; background:rgba(255,255,255,.16); display:flex; align-items:center; justify-content:center; font-family:'Newsreader',serif; font-size:20px; font-weight:600; flex-shrink:0;">MS</div>
+          <div style="flex:1;">
+            <div style="font-family:'Newsreader',serif; font-size:24px; font-weight:500; line-height:1.05;">Maria Silva</div>
+            <div style="font-size:12.5px; color:#A7D7CF; margin-top:2px;">58 anos · Feminino · CPF 041.882.314-07</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:14px;">
+          <span style="display:flex; align-items:center; gap:6px; background:#fff; color:#C7322B; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700;"><span style="width:9px; height:9px; border-radius:50%; background:#DC2626;"></span>Vermelho</span>
+          <span style="display:flex; align-items:center; gap:6px; background:rgba(255,255,255,.14); color:#fff; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:600;">Próxima visita · 3 dias atrasada</span>
+        </div>
+      </div>
+
+      <div style="padding:16px 18px; display:flex; flex-direction:column; gap:13px;">
+        <!-- metas / controle -->
+        <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+          <div style="font-size:13px; font-weight:700; color:#23170E; margin-bottom:12px;">Controle atual</div>
+          <div style="display:flex; flex-direction:column; gap:9px;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-size:13px; color:#5A4E42;">Pressão arterial <span style="color:#9A8C7C;">· meta &lt;140/90</span></span>
+              <span style="font-size:13px; font-weight:700; color:#C7322B;">142/88 <span style="font-size:11px; font-weight:700; background:#FBEDEC; padding:2px 7px; border-radius:6px;">acima</span></span>
+            </div>
+            <div style="height:1px; background:#F2EADE;"></div>
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-size:13px; color:#5A4E42;">HbA1c <span style="color:#9A8C7C;">· meta &lt;7,0</span></span>
+              <span style="font-size:13px; font-weight:700; color:#1B7A3E;">6,9% <span style="font-size:11px; font-weight:700; background:#E6F4EA; padding:2px 7px; border-radius:6px;">na meta</span></span>
+            </div>
+            <div style="height:1px; background:#F2EADE;"></div>
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-size:13px; color:#5A4E42;">LDL <span style="color:#9A8C7C;">· meta &lt;130</span></span>
+              <span style="font-size:13px; font-weight:700; color:#9A6B00;">160 <span style="font-size:11px; font-weight:700; background:#FBF3DF; padding:2px 7px; border-radius:6px;">acima</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- fatores de risco -->
+        <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+          <div style="font-size:13px; font-weight:700; color:#23170E; margin-bottom:12px;">Fatores de risco</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">Tabagismo</span><span style="font-size:13px; font-weight:700; color:#23170E;">Ex-fumante</span></div>
+            <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">Atividade física</span><span style="font-size:13px; font-weight:700; color:#23170E;">Raramente</span></div>
+            <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">Uso de estatina</span><span style="font-size:13px; font-weight:700; color:#23170E;">Sim</span></div>
+            <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">Evento CV</span><span style="font-size:13px; font-weight:700; color:#C7322B;">IAM · 2023</span></div>
+          </div>
+        </div>
+
+        <!-- últimas visitas -->
+        <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+            <span style="font-size:13px; font-weight:700; color:#23170E;">Últimas visitas</span>
+            <span style="font-size:12px; font-weight:700; color:#0F5750;">Ver evolução</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <div style="display:flex; align-items:center; gap:11px;"><div style="width:8px; height:8px; border-radius:50%; background:#DC2626;"></div><span style="font-size:13px; color:#23170E; font-weight:600; flex:1;">14/04 · 14:32</span><span style="font-size:12px; color:#9A8C7C;">PA, glicemia, exames</span></div>
+            <div style="display:flex; align-items:center; gap:11px;"><div style="width:8px; height:8px; border-radius:50%; background:#E6A100;"></div><span style="font-size:13px; color:#23170E; font-weight:600; flex:1;">30/03 · 09:10</span><span style="font-size:12px; color:#9A8C7C;">PA, peso</span></div>
+            <div style="display:flex; align-items:center; gap:11px;"><div style="width:8px; height:8px; border-radius:50%; background:#E6A100;"></div><span style="font-size:13px; color:#23170E; font-weight:600; flex:1;">16/02 · 10:48</span><span style="font-size:12px; color:#9A8C7C;">Exames laboratoriais</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:absolute; left:0; right:0; bottom:0; padding:13px 18px 24px; background:linear-gradient(transparent, #FAF5EE 30%); display:flex; gap:10px;">
+        <div style="flex:1; display:flex; align-items:center; justify-content:center; gap:7px; background:#0F5750; color:#fff; padding:15px 0; border-radius:14px; font-size:14px; font-weight:700;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+          Nova visita
+        </div>
+        <div style="flex:1; display:flex; align-items:center; justify-content:center; background:#F2EAE0; color:#0F5750; padding:15px 0; border-radius:14px; font-size:14px; font-weight:700;">Ver evolução</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 09 · TABELA DA EVOLUÇÃO ===================== -->
+<div style="position:absolute; left:1500px; top:1240px; width:400px;">
+  <div data-drags-parent="1" style="margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;">
+    <div style="font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#0F5750;">09 · Tabela da evolução</div>
+    <div style="font-size:13px; color:#65788a; margin-top:3px; max-width:360px; line-height:1.5;">UC06 — A aba "Tabela": todos os dados por data, com valores fora da meta destacados. Deslize para mais exames.</div>
+  </div>
+  <div style="width:400px; height:1000px; background:#111418; border-radius:52px; padding:11px; box-shadow:0 30px 70px -20px rgba(20,40,60,.45);">
+    <div style="width:100%; height:100%; background:#FAF5EE; border-radius:42px; overflow:hidden; position:relative; font-family:'Plus Jakarta Sans',sans-serif;">
+      <div style="background:#0F5750; padding:16px 22px 18px; border-radius:0 0 26px 26px; color:#fff;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:15px; font-weight:700;">9:41</span>
+          <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+          <span style="display:flex; gap:7px; align-items:center;">
+            <svg width="17" height="13" viewBox="0 0 17 13" fill="none"><path d="M1 4 A8 8 0 0 1 16 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="9" r="1.6" fill="#fff"/></svg>
+            <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+          </span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; margin-top:14px;">
+          <div style="width:36px; height:36px; border-radius:11px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:'Newsreader',serif; font-size:22px; font-weight:500; line-height:1.1;">Evolução</div>
+            <div style="font-size:12.5px; color:#A7D7CF; margin-top:2px;">Maria Silva · 5 registros</div>
+          </div>
+        </div>
+        <div style="display:flex; background:rgba(255,255,255,.12); border-radius:11px; padding:4px; gap:4px; margin-top:15px;">
+          <div style="flex:1; text-align:center; padding:8px 0; border-radius:8px; color:#D8F0EB; font-size:13px; font-weight:600;">Gráfico</div>
+          <div style="flex:1; text-align:center; padding:8px 0; border-radius:8px; background:#fff; color:#0F5750; font-size:13px; font-weight:700;">Tabela</div>
+        </div>
+      </div>
+
+      <div style="padding:14px 16px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:9px;">
+          <span style="font-size:11.5px; color:#9A8C7C; font-weight:600;">Valores fora da meta em destaque</span>
+          <span style="display:flex; align-items:center; gap:5px; font-size:11px; color:#0F5750; font-weight:700;">Deslize <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#0F5750" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+          <!-- header row -->
+          <div style="display:flex; background:#EDF3F0; font-size:11px; font-weight:800; color:#0F5750;">
+            <div style="width:74px; padding:11px 12px; flex-shrink:0;">DATA</div>
+            <div style="flex:1; padding:11px 6px; text-align:center;">PA</div>
+            <div style="flex:1; padding:11px 6px; text-align:center;">GLIC</div>
+            <div style="flex:1; padding:11px 6px; text-align:center;">HbA1c</div>
+            <div style="flex:1; padding:11px 6px; text-align:center;">LDL</div>
+            <div style="width:38px; padding:11px 6px; text-align:center; flex-shrink:0;">●</div>
+          </div>
+          <!-- rows -->
+          <div style="display:flex; align-items:center; font-size:12.5px; border-top:1px solid #F2EADE;">
+            <div style="width:74px; padding:12px; flex-shrink:0; font-weight:700; color:#23170E;">14/04</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; font-weight:700; color:#C7322B;">142/88</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#1B7A3E; font-weight:700;">150</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#1B7A3E; font-weight:700;">6,9</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">160</div>
+            <div style="width:38px; padding:12px 6px; text-align:center; flex-shrink:0;"><span style="display:inline-block; width:11px; height:11px; border-radius:50%; background:#DC2626;"></span></div>
+          </div>
+          <div style="display:flex; align-items:center; font-size:12.5px; border-top:1px solid #F2EADE;">
+            <div style="width:74px; padding:12px; flex-shrink:0; font-weight:700; color:#23170E;">30/03</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#C7322B; font-weight:700;">146/92</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">168</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">—</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">—</div>
+            <div style="width:38px; padding:12px 6px; text-align:center; flex-shrink:0;"><span style="display:inline-block; width:11px; height:11px; border-radius:50%; background:#E6A100;"></span></div>
+          </div>
+          <div style="display:flex; align-items:center; font-size:12.5px; border-top:1px solid #F2EADE;">
+            <div style="width:74px; padding:12px; flex-shrink:0; font-weight:700; color:#23170E;">16/02</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#C7322B; font-weight:700;">152/96</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">182</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">7,6</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">178</div>
+            <div style="width:38px; padding:12px 6px; text-align:center; flex-shrink:0;"><span style="display:inline-block; width:11px; height:11px; border-radius:50%; background:#E6A100;"></span></div>
+          </div>
+          <div style="display:flex; align-items:center; font-size:12.5px; border-top:1px solid #F2EADE;">
+            <div style="width:74px; padding:12px; flex-shrink:0; font-weight:700; color:#23170E;">16/01</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#C7322B; font-weight:700;">160/100</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">196</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">—</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">188</div>
+            <div style="width:38px; padding:12px 6px; text-align:center; flex-shrink:0;"><span style="display:inline-block; width:11px; height:11px; border-radius:50%; background:#DC2626;"></span></div>
+          </div>
+          <div style="display:flex; align-items:center; font-size:12.5px; border-top:1px solid #F2EADE;">
+            <div style="width:74px; padding:12px; flex-shrink:0; font-weight:700; color:#23170E;">02/01</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#C7322B; font-weight:700;">168/104</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">210</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">8,4</div>
+            <div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">196</div>
+            <div style="width:38px; padding:12px 6px; text-align:center; flex-shrink:0;"><span style="display:inline-block; width:11px; height:11px; border-radius:50%; background:#DC2626;"></span></div>
+          </div>
+        </div>
+        <!-- legend -->
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:14px; padding:0 4px;">
+          <span style="display:flex; align-items:center; gap:6px; font-size:11.5px; color:#5A4E42; font-weight:600;"><span style="width:10px; height:10px; border-radius:3px; background:#C7322B;"></span>fora da meta (crítico)</span>
+          <span style="display:flex; align-items:center; gap:6px; font-size:11.5px; color:#5A4E42; font-weight:600;"><span style="width:10px; height:10px; border-radius:3px; background:#9A6B00;"></span>fora da meta (atenção)</span>
+          <span style="display:flex; align-items:center; gap:6px; font-size:11.5px; color:#5A4E42; font-weight:600;"><span style="width:10px; height:10px; border-radius:3px; background:#1B7A3E;"></span>na meta</span>
+          <span style="display:flex; align-items:center; gap:6px; font-size:11.5px; color:#5A4E42; font-weight:600;">— sem coleta</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:8px; background:#EDF3F0; border-radius:12px; padding:11px 13px; margin-top:14px;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:1px;"><circle cx="12" cy="12" r="9" stroke="#0F5750" stroke-width="1.7"/><path d="M12 11v5M12 7.5v.5" stroke="#0F5750" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span style="font-size:11.5px; color:#3C5A53; line-height:1.5;">A tabela mostra todos os exames coletados. Toque numa linha para abrir a visita completa daquele dia.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 10 · ESTADOS DE EXCEÇÃO / ALERTA ===================== -->
+<div style="position:absolute; left:1980px; top:1240px; width:440px;">
+  <div data-drags-parent="1" style="margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;">
+    <div style="font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#0F5750;">10 · Estados de exceção</div>
+    <div style="font-size:13px; color:#65788a; margin-top:3px; max-width:400px; line-height:1.5;">Fluxos alternativos dos casos de uso: bloqueio de login, CPF duplicado, falha de sincronização e visita vazia.</div>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:18px;">
+
+    <!-- Login bloqueado -->
+    <div>
+      <div style="font-size:11px; font-weight:700; color:#9A8C7C; letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif;">UC01 · 5 tentativas inválidas</div>
+      <div style="background:#fff; border-radius:20px; padding:22px; box-shadow:0 10px 34px -16px rgba(80,60,40,.4); font-family:'Plus Jakarta Sans',sans-serif;">
+        <div style="width:50px; height:50px; border-radius:15px; background:#FBEDEC; display:flex; align-items:center; justify-content:center; margin:0 auto;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#C7322B" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#C7322B" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div style="font-family:'Newsreader',serif; font-size:20px; font-weight:600; color:#23170E; text-align:center; margin-top:14px;">Acesso bloqueado</div>
+        <div style="font-size:13px; color:#6B5E50; text-align:center; line-height:1.5; margin-top:6px;">Foram 5 tentativas incorretas. Por segurança, o acesso ficará bloqueado por <b style="color:#C7322B;">15 minutos</b>.</div>
+        <div style="background:#FCF1F0; border-radius:12px; padding:12px; text-align:center; margin-top:14px;">
+          <div style="font-size:11px; color:#9B3A33; font-weight:600;">Tente novamente em</div>
+          <div style="font-family:'Newsreader',serif; font-size:26px; font-weight:600; color:#C7322B; letter-spacing:.04em;">14:32</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CPF já cadastrado -->
+    <div>
+      <div style="font-size:11px; font-weight:700; color:#9A8C7C; letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif;">UC02 · identificador já existe</div>
+      <div style="background:#fff; border-radius:20px; padding:22px; box-shadow:0 10px 34px -16px rgba(80,60,40,.4); font-family:'Plus Jakarta Sans',sans-serif;">
+        <div style="display:flex; align-items:center; gap:13px;">
+          <div style="width:46px; height:46px; border-radius:14px; background:#FCF7EA; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 8v5M12 16.5v.5" stroke="#C68A00" stroke-width="2" stroke-linecap="round"/><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#C68A00" stroke-width="1.7"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:15px; font-weight:700; color:#23170E;">Paciente já cadastrado</div>
+            <div style="font-size:12.5px; color:#6B5E50; margin-top:2px;">O CPF 041.882.314-07 já pertence a <b>Maria Silva</b>.</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:16px;">
+          <div style="flex:1; text-align:center; padding:12px 0; border-radius:12px; background:#0F5750; color:#fff; font-size:13px; font-weight:700;">Ver cadastro</div>
+          <div style="flex:1; text-align:center; padding:12px 0; border-radius:12px; background:#F2EAE0; color:#5A4E42; font-size:13px; font-weight:700;">Cancelar</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Falha de sincronização (offline) -->
+    <div>
+      <div style="font-size:11px; font-weight:700; color:#9A8C7C; letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif;">UC07 · dispositivo offline</div>
+      <div style="background:#23170E; border-radius:16px; padding:15px 16px; box-shadow:0 10px 34px -16px rgba(0,0,0,.5); display:flex; align-items:center; gap:13px; font-family:'Plus Jakarta Sans',sans-serif;">
+        <div style="width:38px; height:38px; border-radius:11px; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path d="M3 15a4 4 0 0 1 4-4 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 19 15" stroke="#FFB454" stroke-width="1.8" stroke-linecap="round"/><path d="M4 19 19 4" stroke="#FFB454" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:14px; font-weight:700; color:#fff;">Sem conexão</div>
+          <div style="font-size:12px; color:#C9BBA9; margin-top:1px;">3 registros seguem salvos no aparelho. Sincronizam sozinhos ao reconectar.</div>
+        </div>
+        <span style="font-size:12px; font-weight:700; color:#FFB454;">OK</span>
+      </div>
+    </div>
+
+    <!-- Visita sem campo -->
+    <div>
+      <div style="font-size:11px; font-weight:700; color:#9A8C7C; letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif;">UC05 · nenhum campo preenchido</div>
+      <div style="background:#fff; border-radius:16px; padding:15px 16px; box-shadow:0 10px 34px -16px rgba(80,60,40,.4); font-family:'Plus Jakarta Sans',sans-serif;">
+        <div style="display:flex; align-items:center; gap:10px; background:#FCF1F0; border:1px solid #F2C9C4; border-radius:12px; padding:11px 13px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><circle cx="12" cy="12" r="9" stroke="#C7322B" stroke-width="1.8"/><path d="M12 8v5M12 15.5v.5" stroke="#C7322B" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="font-size:13px; color:#9B2C24; font-weight:600;">Preencha ao menos um campo para registrar a visita.</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; background:#C9C0B2; color:#fff; padding:14px 0; border-radius:12px; font-size:14px; font-weight:700; margin-top:13px;">
+          Salvar visita
+        </div>
+        <div style="font-size:11px; color:#9A8C7C; text-align:center; margin-top:8px;">Botão desabilitado até haver um dado preenchido.</div>
+      </div>
+    </div>
+
+  </div>
+</div></x-dc>
+</body>
+</html>

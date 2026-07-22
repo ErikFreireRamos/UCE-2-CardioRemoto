@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(export DATABASE_URL=\"postgresql://cardio:cardio@localhost:5432/cardioremoto?schema=public\")",
+      "Bash(npx tsx *)",
+      "Bash(npx vitest *)",
+      "Bash(npm install *)",
+      "Bash(npx playwright *)",
+      "Bash(node -e \"let s='';process.stdin.on\\('data',d=>s+=d\\).on\\('end',\\(\\)=>{const j=JSON.parse\\(s\\);j.items.forEach\\(p=>console.log\\(p.socialName,'·',p.riskLevel,'·',p.visitStatus\\)\\)}\\)\")"
+    ]
+  }
+}

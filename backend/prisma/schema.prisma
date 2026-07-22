@@ -1,0 +1,163 @@
+// CardioRemoto — schema do banco central (PostgreSQL).
+// Offline-first (RNF001): toda entidade sincronizável usa UUID (aceita id gerado no cliente)
+// e mantém createdAt/updatedAt para sincronização idempotente e last-write-wins.
+
+generator client {
+  provider      = "prisma-client-js"
+  // "native" para rodar no host (Windows/macOS/Linux) e o alvo musl para a imagem Docker Alpine.
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BiologicalSex {
+  F
+  M
+}
+
+enum SmokingStatus {
+  fumante
+  ex_fumante
+  nao_fumante
+}
+
+enum PhysicalActivity {
+  nao_praticante
+  raramente
+  regularmente
+  frequentemente
+}
+
+enum CardiovascularHistory {
+  nao
+  IAM
+  AVC
+  DAP
+  outro
+}
+
+enum RiskLevel {
+  verde
+  amarelo
+  vermelho
+  sem_dados
+}
+
+enum SyncStatus {
+  success
+  partial
+  failed
+}
+
+/// Agente de Saúde (AS). Provisionado via seed/admin (UC01 pré-condição).
+model User {
+  id                  String         @id @default(uuid())
+  login               String         @unique
+  passwordHash        String
+  name                String
+  teamId              String?
+  failedLoginAttempts Int            @default(0)
+  lockedUntil         DateTime?
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+  visits              Visit[]
+  refreshTokens       RefreshToken[]
+  syncLogs            SyncLog[]
+}
+
+/// Refresh tokens (rotação + logout por revogação). Guardamos só o hash do token.
+model RefreshToken {
+  id        String    @id @default(uuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Patient {
+  id                    String                @id @default(uuid())
+  identifier            String                @unique // CPF normalizado (só dígitos)
+  socialName            String
+  birthDate             DateTime // idade é DERIVADA, não armazenada
+  biologicalSex         BiologicalSex
+  smokingStatus         SmokingStatus
+  physicalActivity      PhysicalActivity
+  usesStatin            Boolean               @default(false)
+  cardiovascularHistory CardiovascularHistory @default(nao)
+  cardiovascularEventAt DateTime? // obrigatório na aplicação quando o histórico é aterosclerótico
+  lastVisitAt           DateTime? // denormalizado: "visita mais recente" (atualizado a cada visita)
+  riskLevel             RiskLevel             @default(sem_dados) // denormalizado (recalculado a cada visita/sync)
+  createdAt             DateTime              @default(now())
+  updatedAt             DateTime              @updatedAt
+  visits                Visit[]
+
+  @@index([riskLevel])
+  @@index([lastVisitAt])
+}
+
+model Visit {
+  id          String       @id @default(uuid()) // aceita UUID gerado offline no cliente
+  patientId   String
+  collectedAt DateTime // data/hora em que os dados foram coletados
+  authorId    String
+  syncedAt    DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  patient     Patient      @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  author      User         @relation(fields: [authorId], references: [id])
+  measurement Measurement?
+
+  @@index([patientId, collectedAt])
+  @@index([updatedAt])
+}
+
+/// Campos de uma visita — todos opcionais; ao menos um exigido pela aplicação. IMC calculado no servidor.
+model Measurement {
+  id                     String @id @default(uuid())
+  visitId                String @unique
+  // antropométricos
+  weight                 Float?
+  height                 Float?
+  bmi                    Float? // calculado no servidor, nunca confiar no enviado
+  waistCircumference     Float?
+  // vitais
+  bloodPressureSystolic  Int?
+  bloodPressureDiastolic Int?
+  heartRate              Int?
+  capillaryGlycemia      Float?
+  // laboratoriais
+  fastingGlucose         Float?
+  hba1c                  Float?
+  totalCholesterol       Float?
+  hdl                    Float?
+  ldl                    Float?
+  triglycerides          Float?
+  creatinine             Float?
+  urea                   Float?
+  tsh                    Float?
+  tgo                    Float?
+  tgp                    Float?
+  cpk                    Float?
+  albuminCreatinineRatio Float?
+  visit                  Visit  @relation(fields: [visitId], references: [id], onDelete: Cascade)
+}
+
+/// Auditoria mínima de sincronização (quem/quando/quantos).
+model SyncLog {
+  id           String     @id @default(uuid())
+  authorId     String
+  deviceId     String
+  recordsCount Int
+  status       SyncStatus
+  syncedAt     DateTime   @default(now())
+  author       User       @relation(fields: [authorId], references: [id])
+
+  @@index([authorId, syncedAt])
+}

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .scr::-webkit-scrollbar { width: 0; height: 0; }
+  .scr { scrollbar-width: none; }
+  input { font-family: 'Plus Jakarta Sans', sans-serif; }
+</style>
+</helmet>
+
+<div style="min-height:100vh; background:radial-gradient(circle at 50% 0%, #EEE7DB, #E4DCCD); display:flex; flex-direction:column; align-items:center; padding:30px 0 50px; font-family:'Plus Jakarta Sans',sans-serif;">
+  <div style="text-align:center; margin-bottom:22px;">
+    <div style="font-family:'Newsreader',serif; font-size:24px; font-weight:600; color:#0F5750;">CardioRemoto · protótipo</div>
+    <div style="font-size:13px; color:#8A7D6C; margin-top:3px;">Toque para navegar — filtros, busca, alertas e sincronização funcionam.</div>
+  </div>
+
+  <!-- PHONE -->
+  <div style="width:392px; height:822px; background:#111418; border-radius:52px; padding:11px; box-shadow:0 40px 90px -30px rgba(20,40,60,.5); position:relative;">
+    <div class="scr" style="width:100%; height:100%; background:#FAF5EE; border-radius:42px; overflow:hidden; position:relative;">
+
+      <!-- ============ LOGIN ============ -->
+      <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute; inset:0; background:#0F5750; color:#fff; overflow:hidden;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 28px 8px;">
+            <span style="font-size:15px; font-weight:700;">9:41</span>
+            <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+            <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; padding:42px 0 26px;">
+            <div style="width:74px; height:74px; border-radius:22px; background:rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.2 1.3 4 2.5C10.8 6.3 12 5 14 5c3.5 0 5 4 3.5 7-.5.9-1.3 1.9-2.3 2.9" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 12.5H7l1.6-3.2L11 15l1.6-2.5h4" stroke="#7FE0CE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div style="font-family:'Newsreader',serif; font-size:34px; font-weight:600; margin-top:18px;">CardioRemoto</div>
+            <div style="font-size:13px; color:#A7D7CF; margin-top:4px; letter-spacing:.04em;">Ecossistema mare.IA · HULW</div>
+          </div>
+          <div style="position:absolute; left:0; right:0; bottom:0; background:#FAF5EE; border-radius:30px 30px 42px 42px; padding:28px 24px 30px;">
+            <div style="font-family:'Newsreader',serif; font-size:22px; font-weight:600; color:#23170E;">Entrar</div>
+            <div style="font-size:13px; color:#9A8C7C; margin-top:3px;">Use suas credenciais da unidade.</div>
+            <div style="margin-top:22px;">
+              <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">CPF / usuário</div>
+              <div style="display:flex; align-items:center; gap:10px; background:#fff; border:1.5px solid #ECE3D6; border-radius:13px; padding:14px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="#9A8C7C" stroke-width="1.6"/><path d="M5 19a7 7 0 0 1 14 0" stroke="#9A8C7C" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span style="font-size:15px; color:#23170E;">sandra.lima</span>
+              </div>
+            </div>
+            <div style="margin-top:15px;">
+              <div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Senha</div>
+              <div style="display:flex; align-items:center; justify-content:space-between; background:#fff; border:1.5px solid #ECE3D6; border-radius:13px; padding:14px;">
+                <span style="font-size:18px; color:#23170E; letter-spacing:3px;">••••••••</span>
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="#9A8C7C" stroke-width="1.6"/><circle cx="12" cy="12" r="2.6" stroke="#9A8C7C" stroke-width="1.6"/></svg>
+              </div>
+            </div>
+            <div onClick="{{ goLista }}" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#0F5750; color:#fff; padding:16px 0; border-radius:14px; font-size:15px; font-weight:700; margin-top:20px; cursor:pointer;">
+              Entrar
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div style="display:flex; align-items:center; justify-content:center; gap:7px; margin-top:18px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 15a4 4 0 0 1 4-4 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 19 15" stroke="#5B8A52" stroke-width="1.7" stroke-linecap="round"/></svg>
+              <span style="font-size:12px; font-weight:600; color:#7C8F6F;">Funciona offline · dados no aparelho</span>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ LISTA ============ -->
+      <sc-if value="{{ isLista }}" hint-placeholder-val="{{ false }}">
+        <div class="scr" style="position:absolute; inset:0; overflow-y:auto;">
+          <div style="background:#0F5750; padding:16px 24px 20px; border-radius:0 0 28px 28px; color:#fff; position:sticky; top:0; z-index:5;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:15px; font-weight:700;">9:41</span>
+              <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+              <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+            </div>
+            <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-top:14px;">
+              <div>
+                <div style="font-family:'Newsreader',serif; font-size:29px; font-weight:500;">Pacientes</div>
+                <div style="font-size:13px; color:#A7D7CF; font-weight:500; margin-top:2px;">Sandra · ACS · Equipe 04</div>
+              </div>
+              <div onClick="{{ openSync }}" style="display:flex; align-items:center; gap:6px; background:rgba(255,255,255,.14); color:#C8EBE4; padding:8px 12px; border-radius:999px; font-size:12px; font-weight:700; cursor:pointer;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8M20 4v4h-4" stroke="#C8EBE4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16M4 20v-4h4" stroke="#C8EBE4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Sincronizar
+              </div>
+            </div>
+            <div style="display:flex; gap:7px; margin-top:16px;">
+              <div onClick="{{ filterTodos }}" style="{{ chipTodos }}">Todos</div>
+              <div onClick="{{ filterVerde }}" style="{{ chipVerde }}"><span style="width:9px; height:9px; border-radius:50%; background:#5FD39A;"></span>Verde</div>
+              <div onClick="{{ filterAmarelo }}" style="{{ chipAmarelo }}"><span style="width:9px; height:9px; border-radius:50%; background:#FFC53D;"></span>Amarelo</div>
+              <div onClick="{{ filterVermelho }}" style="{{ chipVermelho }}"><span style="width:9px; height:9px; border-radius:50%; background:#FF7A6B;"></span>Verm.</div>
+            </div>
+          </div>
+
+          <div style="padding:14px 18px 2px;">
+            <div style="display:flex; align-items:center; gap:10px; background:#fff; border:1.5px solid #ECE3D6; border-radius:13px; padding:11px 14px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#9A8C7C" stroke-width="1.8"/><path d="M20 20l-3.5-3.5" stroke="#9A8C7C" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <input value="{{ search }}" onInput="{{ onSearch }}" placeholder="Buscar por nome ou CPF…" style="flex:1; border:none; outline:none; background:transparent; font-size:14px; color:#23170E;" />
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 22px 8px;">
+            <span style="font-size:12px; font-weight:600; color:#9A8C7C;">{{ count }} · ordenado por <span style="color:#0F5750; font-weight:700;">prioridade de visita</span></span>
+          </div>
+
+          <div style="padding:0 18px 22px; display:flex; flex-direction:column; gap:11px;">
+            <sc-for list="{{ visible }}" as="p" hint-placeholder-count="3">
+              <div onClick="{{ p.onTap }}" style="background:#fff; border-radius:18px; padding:15px; box-shadow:0 4px 16px -8px rgba(80,60,40,.22); cursor:pointer;">
+                <div style="display:flex; align-items:center; gap:13px;">
+                  <div style="width:46px; height:46px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:600; font-family:'Newsreader',serif; flex-shrink:0; background:{{ p.avatarBg }}; color:{{ p.textColor }};">{{ p.initials }}</div>
+                  <div style="flex:1; min-width:0;">
+                    <div style="font-family:'Newsreader',serif; font-size:19px; font-weight:600; color:#23170E;">{{ p.name }}</div>
+                    <div style="font-size:12.5px; color:#9A8C7C; font-weight:500;">{{ p.ageSex }}</div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+                    <span style="display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:{{ p.textColor }};"><span style="width:10px; height:10px; border-radius:50%; background:{{ p.dot }};"></span>{{ p.riskLabel }}</span>
+                    <span style="font-size:12px; font-weight:700; padding:3px 9px; border-radius:7px; color:{{ p.visitColor }}; background:{{ p.visitBg }};">{{ p.visit }}</span>
+                  </div>
+                </div>
+                <sc-if value="{{ p.hasAlert }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex; align-items:center; gap:8px; margin-top:12px; border-radius:12px; padding:9px 12px; background:{{ p.alertBg }}; border:1px solid {{ p.alertBorder }};">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M12 8v5M12 16.5v.5" stroke="{{ p.alertStrong }}" stroke-width="2" stroke-linecap="round"/><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="{{ p.alertStrong }}" stroke-width="1.7"/></svg>
+                    <span style="font-size:13px; font-weight:500; color:{{ p.alertColor }};">{{ p.alertText }}</span>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ p.noAlert }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex; gap:9px; margin-top:12px;">
+                    <div onClick="{{ p.onVisita }}" style="flex:1; text-align:center; padding:10px 0; border-radius:12px; background:#0F5750; color:#fff; font-size:13px; font-weight:700;">+ Nova visita</div>
+                    <div onClick="{{ p.onEvol }}" style="flex:1; text-align:center; padding:10px 0; border-radius:12px; background:#F2EAE0; color:#0F5750; font-size:13px; font-weight:700;">Evolução</div>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+            <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+              <div style="text-align:center; color:#9A8C7C; font-size:13px; padding:30px 0;">Nenhum paciente encontrado.</div>
+            </sc-if>
+          </div>
+        </div>
+        <div onClick="{{ goNovo }}" style="position:absolute; right:22px; bottom:26px; width:60px; height:60px; border-radius:50%; background:#E2725B; display:flex; align-items:center; justify-content:center; box-shadow:0 14px 26px -8px rgba(226,114,91,.7); cursor:pointer;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </div>
+      </sc-if>
+
+      <!-- ============ PERFIL ============ -->
+      <sc-if value="{{ isPerfil }}" hint-placeholder-val="{{ false }}">
+        <div class="scr" style="position:absolute; inset:0; overflow-y:auto;">
+          <div style="background:#0F5750; padding:16px 22px 20px; border-radius:0 0 26px 26px; color:#fff;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:15px; font-weight:700;">9:41</span>
+              <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+              <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+            </div>
+            <div style="display:flex; align-items:center; gap:13px; margin-top:14px;">
+              <div onClick="{{ goLista }}" style="width:36px; height:36px; border-radius:11px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div style="width:50px; height:50px; border-radius:15px; background:rgba(255,255,255,.16); display:flex; align-items:center; justify-content:center; font-family:'Newsreader',serif; font-size:19px; font-weight:600; flex-shrink:0;">{{ selInitials }}</div>
+              <div style="flex:1;">
+                <div style="font-family:'Newsreader',serif; font-size:23px; font-weight:500; line-height:1.05;">{{ selName }}</div>
+                <div style="font-size:12px; color:#A7D7CF; margin-top:2px;">{{ selAgeSex }} · CPF 041.882.314-07</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:8px; margin-top:14px;">
+              <span style="display:flex; align-items:center; gap:6px; background:#fff; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; color:{{ selText }};"><span style="width:9px; height:9px; border-radius:50%; background:{{ selDot }};"></span>{{ selRiskLabel }}</span>
+              <span style="background:rgba(255,255,255,.14); color:#fff; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:600;">{{ selVisit }}</span>
+            </div>
+          </div>
+          <div style="padding:16px 18px 22px; display:flex; flex-direction:column; gap:13px;">
+            <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+              <div style="font-size:13px; font-weight:700; color:#23170E; margin-bottom:12px;">Controle atual</div>
+              <div style="display:flex; flex-direction:column; gap:9px;">
+                <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">Pressão arterial</span><span style="font-size:13px; font-weight:700; color:#C7322B;">142/88 <span style="font-size:11px; background:#FBEDEC; padding:2px 7px; border-radius:6px;">acima</span></span></div>
+                <div style="height:1px; background:#F2EADE;"></div>
+                <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">HbA1c</span><span style="font-size:13px; font-weight:700; color:#1B7A3E;">6,9% <span style="font-size:11px; background:#E6F4EA; padding:2px 7px; border-radius:6px;">na meta</span></span></div>
+                <div style="height:1px; background:#F2EADE;"></div>
+                <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">LDL</span><span style="font-size:13px; font-weight:700; color:#9A6B00;">160 <span style="font-size:11px; background:#FBF3DF; padding:2px 7px; border-radius:6px;">acima</span></span></div>
+              </div>
+            </div>
+            <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+              <div style="font-size:13px; font-weight:700; color:#23170E; margin-bottom:12px;">Fatores de risco</div>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">Tabagismo</span><span style="font-size:13px; font-weight:700; color:#23170E;">Ex-fumante</span></div>
+                <div style="display:flex; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">Atividade física</span><span style="font-size:13px; font-weight:700; color:#23170E;">Raramente</span></div>
+                <div style="display:flex; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">Uso de estatina</span><span style="font-size:13px; font-weight:700; color:#23170E;">Sim</span></div>
+                <div style="display:flex; justify-content:space-between;"><span style="font-size:13px; color:#5A4E42;">Evento CV</span><span style="font-size:13px; font-weight:700; color:#C7322B;">IAM · 2023</span></div>
+              </div>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <div onClick="{{ goVisita }}" style="flex:1; display:flex; align-items:center; justify-content:center; gap:7px; background:#0F5750; color:#fff; padding:15px 0; border-radius:14px; font-size:14px; font-weight:700; cursor:pointer;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>Nova visita
+              </div>
+              <div onClick="{{ goEvolucao }}" style="flex:1; display:flex; align-items:center; justify-content:center; background:#F2EAE0; color:#0F5750; padding:15px 0; border-radius:14px; font-size:14px; font-weight:700; cursor:pointer;">Ver evolução</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ NOVA VISITA ============ -->
+      <sc-if value="{{ isVisita }}" hint-placeholder-val="{{ false }}">
+        <div class="scr" style="position:absolute; inset:0; overflow-y:auto; padding-bottom:96px;">
+          <div style="background:#0F5750; padding:16px 22px 16px; border-radius:0 0 26px 26px; color:#fff;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:15px; font-weight:700;">9:41</span>
+              <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+              <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; margin-top:14px;">
+              <div onClick="{{ goPerfil }}" style="width:36px; height:36px; border-radius:11px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="font-family:'Newsreader',serif; font-size:22px; font-weight:500; line-height:1.1;">Nova visita</div>
+                <div style="font-size:12.5px; color:#A7D7CF; margin-top:2px;">{{ selName }} · agora</div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:16px 18px; display:flex; flex-direction:column; gap:13px;">
+            <!-- antropométricos -->
+            <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+              <div style="font-size:14px; font-weight:700; color:#23170E; margin-bottom:13px;">Antropométricos</div>
+              <div style="display:flex; gap:10px;">
+                <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">PESO (kg)</div><input value="{{ form.peso }}" onInput="{{ onPeso }}" inputmode="decimal" style="width:100%; background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E; outline:none;" /></div>
+                <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">ALTURA (cm)</div><input value="{{ form.altura }}" onInput="{{ onAltura }}" inputmode="decimal" style="width:100%; background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E; outline:none;" /></div>
+              </div>
+              <div style="display:flex; gap:10px; margin-top:10px;">
+                <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">IMC (auto)</div><div style="background:#EDF3F0; border:1.5px solid #D5E6DF; border-radius:10px; padding:11px 12px; font-size:15px; font-weight:700; color:#0F5750;">{{ imc }}</div></div>
+                <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">CINTURA (cm)</div><input value="{{ form.cintura }}" onInput="{{ onCintura }}" inputmode="decimal" style="width:100%; background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E; outline:none;" /></div>
+              </div>
+            </div>
+            <!-- vitais -->
+            <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+              <div style="font-size:14px; font-weight:700; color:#23170E; margin-bottom:13px;">Medições vitais</div>
+              <div style="display:flex; gap:10px;">
+                <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">PA SISTÓLICA</div><input value="{{ form.paSist }}" onInput="{{ onPaSist }}" inputmode="numeric" style="width:100%; border-radius:10px; padding:11px 12px; font-size:15px; font-weight:700; outline:none; background:{{ paFieldBg }}; border:1.5px solid {{ paFieldBorder }}; color:{{ paFieldColor }};" /></div>
+                <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">PA DIASTÓLICA</div><input value="{{ form.paDias }}" onInput="{{ onPaDias }}" inputmode="numeric" style="width:100%; border-radius:10px; padding:11px 12px; font-size:15px; font-weight:700; outline:none; background:{{ paFieldBg }}; border:1.5px solid {{ paFieldBorder }}; color:{{ paFieldColor }};" /></div>
+              </div>
+              <sc-if value="{{ paRed }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex; align-items:center; gap:8px; margin-top:10px; background:#FCEEEC; border:1px solid #F2C9C4; border-radius:11px; padding:9px 12px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M12 8v5M12 16.5v.5" stroke="#C7322B" stroke-width="2" stroke-linecap="round"/><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#C7322B" stroke-width="1.7"/></svg>
+                  <span style="font-size:12.5px; color:#9B2C24; font-weight:600;">Alerta vermelho — PA fora da faixa segura</span>
+                </div>
+              </sc-if>
+              <div style="display:flex; gap:10px; margin-top:10px;">
+                <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">FREQ. CARDÍACA</div><input value="{{ form.fc }}" onInput="{{ onFc }}" inputmode="numeric" style="width:100%; background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E; outline:none;" /></div>
+                <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">GLICEMIA CAP.</div><input value="{{ form.glic }}" onInput="{{ onGlic }}" inputmode="numeric" style="width:100%; border-radius:10px; padding:11px 12px; font-size:15px; font-weight:700; outline:none; background:{{ glFieldBg }}; border:1.5px solid {{ glFieldBorder }}; color:{{ glFieldColor }};" /></div>
+              </div>
+              <sc-if value="{{ glRed }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:center; gap:8px; margin-top:10px; background:#FCEEEC; border:1px solid #F2C9C4; border-radius:11px; padding:9px 12px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M12 8v5M12 16.5v.5" stroke="#C7322B" stroke-width="2" stroke-linecap="round"/><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#C7322B" stroke-width="1.7"/></svg>
+                  <span style="font-size:12.5px; color:#9B2C24; font-weight:600;">Alerta vermelho — glicemia ≥250 ou &lt;70 mg/dL</span>
+                </div>
+              </sc-if>
+            </div>
+            <!-- labs -->
+            <div style="background:#fff; border-radius:16px; padding:15px; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:13px;"><span style="font-size:14px; font-weight:700; color:#23170E;">Exames laboratoriais</span><span style="font-size:11px; font-weight:600; color:#9A8C7C;">14 campos</span></div>
+              <div style="display:flex; gap:10px;">
+                <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">LDL</div><input value="{{ form.ldl }}" onInput="{{ onLdl }}" inputmode="numeric" style="width:100%; border-radius:10px; padding:11px 12px; font-size:15px; font-weight:700; outline:none; background:{{ ldFieldBg }}; border:1.5px solid {{ ldFieldBorder }}; color:{{ ldFieldColor }};" /></div>
+                <div style="flex:1;"><div style="font-size:11px; font-weight:700; color:#9A8C7C; margin-bottom:5px;">HbA1c (%)</div><input value="{{ form.hba1c }}" onInput="{{ onHba1c }}" inputmode="decimal" style="width:100%; background:#FAF7F2; border:1.5px solid #ECE3D6; border-radius:10px; padding:11px 12px; font-size:15px; color:#23170E; outline:none;" /></div>
+              </div>
+              <sc-if value="{{ ldAmber }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:center; gap:8px; margin-top:10px; background:#FCF7EA; border:1px solid #ECDCAE; border-radius:11px; padding:9px 12px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M12 8v5M12 16.5v.5" stroke="#C68A00" stroke-width="2" stroke-linecap="round"/><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#C68A00" stroke-width="1.7"/></svg>
+                  <span style="font-size:12.5px; color:#806012; font-weight:600;">Alerta amarelo — LDL ≥190 mg/dL</span>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute; left:0; right:0; bottom:0; padding:12px 18px 22px; background:linear-gradient(transparent, #FAF5EE 32%);">
+          <div onClick="{{ save }}" style="display:flex; align-items:center; justify-content:center; gap:8px; padding:16px 0; border-radius:14px; font-size:15px; font-weight:700; cursor:pointer; background:{{ saveBg }}; color:{{ saveColor }};">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="{{ saveColor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Salvar visita
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ EVOLUÇÃO ============ -->
+      <sc-if value="{{ isEvol }}" hint-placeholder-val="{{ false }}">
+        <div class="scr" style="position:absolute; inset:0; overflow-y:auto;">
+          <div style="background:#0F5750; padding:16px 22px 16px; border-radius:0 0 26px 26px; color:#fff;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:15px; font-weight:700;">9:41</span>
+              <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+              <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; margin-top:14px;">
+              <div onClick="{{ goPerfil }}" style="width:36px; height:36px; border-radius:11px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="font-family:'Newsreader',serif; font-size:22px; font-weight:500; line-height:1.1;">Evolução</div>
+                <div style="font-size:12.5px; color:#A7D7CF; margin-top:2px;">{{ selName }} · 5 registros</div>
+              </div>
+            </div>
+            <div style="display:flex; background:rgba(255,255,255,.12); border-radius:11px; padding:4px; gap:4px; margin-top:15px;">
+              <div onClick="{{ toggleGrafico }}" style="{{ tabGrafico }}">Gráfico</div>
+              <div onClick="{{ toggleTabela }}" style="{{ tabTabela }}">Tabela</div>
+            </div>
+          </div>
+
+          <sc-if value="{{ isGrafico }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:14px 16px 22px; display:flex; flex-direction:column; gap:11px;">
+              <div style="display:flex; align-items:center; gap:11px; background:#FCF1F0; border:1px solid #F2C9C4; border-radius:14px; padding:12px 14px;">
+                <span style="width:12px; height:12px; border-radius:50%; background:#DC2626; flex-shrink:0;"></span>
+                <div><div style="font-size:13.5px; font-weight:700; color:#9B2C24;">Não controlado · Vermelho</div><div style="font-size:11.5px; color:#9B3A33; margin-top:2px;">2 parâmetros fora da meta: PA sistólica e LDL</div></div>
+              </div>
+              <div style="background:#fff; border-radius:16px; padding:14px; box-shadow:0 4px 14px -10px rgba(80,60,40,.22);">
+                <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+                  <div><div style="display:flex; align-items:center; gap:7px;"><span style="width:10px; height:10px; border-radius:3px; background:#DC2626;"></span><span style="font-size:14px; font-weight:700; color:#23170E;">Pressão arterial</span></div><div style="font-size:11.5px; color:#9A8C7C; margin-top:3px;">mmHg · meta &lt; 140/90</div></div>
+                  <div style="text-align:right;"><div style="font-size:21px; font-weight:800; color:#C7322B; line-height:1;">142/88</div><span style="display:inline-block; margin-top:5px; font-size:10px; font-weight:700; color:#C7322B; background:#FBEDEC; padding:3px 8px; border-radius:6px;">acima da meta</span></div>
+                </div>
+                <svg width="100%" height="116" viewBox="0 0 300 124" preserveAspectRatio="none" style="margin-top:8px;">
+                  <line x1="0" y1="57.2" x2="300" y2="57.2" stroke="#E7B4AE" stroke-width="1" stroke-dasharray="4 4"/>
+                  <polyline points="24,32.6 89,39.6 154,46.6 219,51.9 284,55.4" fill="none" stroke="#DC2626" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <g fill="#DC2626"><circle cx="24" cy="32.6" r="3"/><circle cx="89" cy="39.6" r="3"/><circle cx="154" cy="46.6" r="3"/><circle cx="219" cy="51.9" r="3"/><circle cx="284" cy="55.4" r="3.7"/></g>
+                  <g font-size="9" font-weight="700" fill="#C7322B" text-anchor="middle"><text x="24" y="26">168</text><text x="89" y="33">160</text><text x="154" y="40">152</text><text x="219" y="45.5">146</text><text x="284" y="49">142</text></g>
+                </svg>
+              </div>
+              <div style="background:#fff; border-radius:16px; padding:14px; box-shadow:0 4px 14px -10px rgba(80,60,40,.22);">
+                <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+                  <div><div style="display:flex; align-items:center; gap:7px;"><span style="width:10px; height:10px; border-radius:3px; background:#E2725B;"></span><span style="font-size:14px; font-weight:700; color:#23170E;">Glicemia capilar</span></div><div style="font-size:11.5px; color:#9A8C7C; margin-top:3px;">mg/dL · meta &lt; 180</div></div>
+                  <div style="text-align:right;"><div style="font-size:21px; font-weight:800; color:#1B7A3E; line-height:1;">150</div><span style="display:inline-block; margin-top:5px; font-size:10px; font-weight:700; color:#1B7A3E; background:#E6F4EA; padding:3px 8px; border-radius:6px;">na meta</span></div>
+                </div>
+                <svg width="100%" height="116" viewBox="0 0 300 124" preserveAspectRatio="none" style="margin-top:8px;">
+                  <rect x="0" y="72.3" width="300" height="40" fill="#EAF6EE"/>
+                  <line x1="0" y1="72.3" x2="300" y2="72.3" stroke="#9FD3B0" stroke-width="1" stroke-dasharray="4 4"/>
+                  <polyline points="24,53.4 89,62.2 154,71 219,79.8 284,91.1" fill="none" stroke="#E2725B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <g fill="#E2725B"><circle cx="24" cy="53.4" r="3"/><circle cx="89" cy="62.2" r="3"/><circle cx="154" cy="71" r="3"/><circle cx="219" cy="79.8" r="3"/><circle cx="284" cy="91.1" r="3.7"/></g>
+                  <g font-size="9" font-weight="700" fill="#C0573F" text-anchor="middle"><text x="24" y="47">210</text><text x="89" y="56">196</text><text x="154" y="64.5">182</text><text x="219" y="73.5">168</text><text x="284" y="85">150</text></g>
+                </svg>
+              </div>
+              <div style="background:#fff; border-radius:16px; padding:14px; box-shadow:0 4px 14px -10px rgba(80,60,40,.22);">
+                <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+                  <div><div style="display:flex; align-items:center; gap:7px;"><span style="width:10px; height:10px; border-radius:3px; background:#9A6B00;"></span><span style="font-size:14px; font-weight:700; color:#23170E;">Colesterol LDL</span></div><div style="font-size:11.5px; color:#9A8C7C; margin-top:3px;">mg/dL · meta &lt; 130</div></div>
+                  <div style="text-align:right;"><div style="font-size:21px; font-weight:800; color:#9A6B00; line-height:1;">160</div><span style="display:inline-block; margin-top:5px; font-size:10px; font-weight:700; color:#9A6B00; background:#FBF3DF; padding:3px 8px; border-radius:6px;">acima da meta</span></div>
+                </div>
+                <svg width="100%" height="116" viewBox="0 0 300 124" preserveAspectRatio="none" style="margin-top:8px;">
+                  <rect x="0" y="100.2" width="300" height="12" fill="#EAF6EE"/>
+                  <line x1="0" y1="100.2" x2="300" y2="100.2" stroke="#9FD3B0" stroke-width="1" stroke-dasharray="4 4"/>
+                  <polyline points="24,35.7 89,43.5 154,53.3 219,63.1 284,70.9" fill="none" stroke="#9A6B00" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <g fill="#9A6B00"><circle cx="24" cy="35.7" r="3"/><circle cx="89" cy="43.5" r="3"/><circle cx="154" cy="53.3" r="3"/><circle cx="219" cy="63.1" r="3"/><circle cx="284" cy="70.9" r="3.7"/></g>
+                  <g font-size="9" font-weight="700" fill="#8A6200" text-anchor="middle"><text x="24" y="29">196</text><text x="89" y="37">188</text><text x="154" y="47">178</text><text x="219" y="56.5">168</text><text x="284" y="64.5">160</text></g>
+                </svg>
+              </div>
+              <div style="display:flex; justify-content:space-between; padding:0 6px; font-size:10.5px; color:#9A8C7C; font-weight:700;"><span>02/01</span><span>16/02</span><span>30/03</span><span>14/04</span><span>hoje</span></div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isTabela }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:14px 16px 22px;">
+              <div style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 16px -10px rgba(80,60,40,.22);">
+                <div style="display:flex; background:#EDF3F0; font-size:11px; font-weight:800; color:#0F5750;">
+                  <div style="width:70px; padding:11px 12px; flex-shrink:0;">DATA</div>
+                  <div style="flex:1; padding:11px 6px; text-align:center;">PA</div>
+                  <div style="flex:1; padding:11px 6px; text-align:center;">GLIC</div>
+                  <div style="flex:1; padding:11px 6px; text-align:center;">HbA1c</div>
+                  <div style="flex:1; padding:11px 6px; text-align:center;">LDL</div>
+                </div>
+                <div style="display:flex; align-items:center; font-size:12.5px; border-top:1px solid #F2EADE;"><div style="width:70px; padding:12px; flex-shrink:0; font-weight:700; color:#23170E;">14/04</div><div style="flex:1; padding:12px 6px; text-align:center; font-weight:700; color:#C7322B;">142/88</div><div style="flex:1; padding:12px 6px; text-align:center; color:#1B7A3E; font-weight:700;">150</div><div style="flex:1; padding:12px 6px; text-align:center; color:#1B7A3E; font-weight:700;">6,9</div><div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">160</div></div>
+                <div style="display:flex; align-items:center; font-size:12.5px; border-top:1px solid #F2EADE;"><div style="width:70px; padding:12px; flex-shrink:0; font-weight:700; color:#23170E;">30/03</div><div style="flex:1; padding:12px 6px; text-align:center; color:#C7322B; font-weight:700;">146/92</div><div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">168</div><div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">—</div><div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">—</div></div>
+                <div style="display:flex; align-items:center; font-size:12.5px; border-top:1px solid #F2EADE;"><div style="width:70px; padding:12px; flex-shrink:0; font-weight:700; color:#23170E;">16/02</div><div style="flex:1; padding:12px 6px; text-align:center; color:#C7322B; font-weight:700;">152/96</div><div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">182</div><div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">7,6</div><div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">178</div></div>
+                <div style="display:flex; align-items:center; font-size:12.5px; border-top:1px solid #F2EADE;"><div style="width:70px; padding:12px; flex-shrink:0; font-weight:700; color:#23170E;">16/01</div><div style="flex:1; padding:12px 6px; text-align:center; color:#C7322B; font-weight:700;">160/100</div><div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">196</div><div style="flex:1; padding:12px 6px; text-align:center; color:#5A4E42;">—</div><div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">188</div></div>
+                <div style="display:flex; align-items:center; font-size:12.5px; border-top:1px solid #F2EADE;"><div style="width:70px; padding:12px; flex-shrink:0; font-weight:700; color:#23170E;">02/01</div><div style="flex:1; padding:12px 6px; text-align:center; color:#C7322B; font-weight:700;">168/104</div><div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">210</div><div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">8,4</div><div style="flex:1; padding:12px 6px; text-align:center; color:#9A6B00; font-weight:700;">196</div></div>
+              </div>
+              <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:14px; padding:0 4px;">
+                <span style="display:flex; align-items:center; gap:6px; font-size:11.5px; color:#5A4E42; font-weight:600;"><span style="width:10px; height:10px; border-radius:3px; background:#C7322B;"></span>crítico</span>
+                <span style="display:flex; align-items:center; gap:6px; font-size:11.5px; color:#5A4E42; font-weight:600;"><span style="width:10px; height:10px; border-radius:3px; background:#9A6B00;"></span>atenção</span>
+                <span style="display:flex; align-items:center; gap:6px; font-size:11.5px; color:#5A4E42; font-weight:600;"><span style="width:10px; height:10px; border-radius:3px; background:#1B7A3E;"></span>na meta</span>
+                <span style="font-size:11.5px; color:#5A4E42; font-weight:600;">— sem coleta</span>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- ============ NOVO PACIENTE ============ -->
+      <sc-if value="{{ isNovo }}" hint-placeholder-val="{{ false }}">
+        <div class="scr" style="position:absolute; inset:0; overflow-y:auto; padding-bottom:96px;">
+          <div style="background:#0F5750; padding:16px 22px 16px; border-radius:0 0 26px 26px; color:#fff;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:15px; font-weight:700;">9:41</span>
+              <div style="position:absolute; left:50%; top:9px; transform:translateX(-50%); width:118px; height:30px; background:#000; border-radius:18px;"></div>
+              <span style="display:inline-block; width:24px; height:12px; border:1.5px solid #fff; border-radius:3px; position:relative;"><span style="position:absolute; inset:1.5px; right:8px; background:#fff; border-radius:1px;"></span></span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; margin-top:14px;">
+              <div onClick="{{ goLista }}" style="width:36px; height:36px; border-radius:11px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div style="font-family:'Newsreader',serif; font-size:24px; font-weight:500;">Novo paciente</div>
+            </div>
+          </div>
+          <div style="padding:18px 20px; display:flex; flex-direction:column; gap:15px;">
+            <div><div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">CPF (identificação)</div><input placeholder="000.000.000-00" style="width:100%; background:#fff; border:1.5px solid #ECE3D6; border-radius:12px; padding:13px 14px; font-size:15px; color:#23170E; outline:none;" /></div>
+            <div><div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Nome social</div><input placeholder="Nome do paciente" style="width:100%; background:#fff; border:1.5px solid #ECE3D6; border-radius:12px; padding:13px 14px; font-size:15px; color:#23170E; outline:none;" /></div>
+            <div style="display:flex; gap:12px;">
+              <div style="flex:1;"><div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Nascimento</div><input placeholder="dd/mm/aaaa" style="width:100%; background:#fff; border:1.5px solid #ECE3D6; border-radius:12px; padding:13px 14px; font-size:15px; color:#23170E; outline:none;" /></div>
+              <div style="width:90px;"><div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Idade</div><div style="background:#EDF3F0; border:1.5px solid #D5E6DF; border-radius:12px; padding:13px 0; text-align:center; font-size:15px; font-weight:700; color:#0F5750;">—</div></div>
+            </div>
+            <div><div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Sexo biológico</div><div style="display:flex; background:#F2EAE0; border-radius:12px; padding:4px; gap:4px;"><div style="flex:1; text-align:center; padding:11px 0; border-radius:9px; background:#0F5750; color:#fff; font-size:13px; font-weight:700;">Feminino</div><div style="flex:1; text-align:center; padding:11px 0; color:#6B5E50; font-size:13px; font-weight:600;">Masculino</div></div></div>
+            <div><div style="font-size:12px; font-weight:700; color:#4A6B64; margin-bottom:7px;">Histórico de evento cardiovascular</div><div style="display:flex; flex-wrap:wrap; gap:8px;"><div style="padding:9px 14px; border-radius:999px; background:#0F5750; color:#fff; font-size:13px; font-weight:700;">Não</div><div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">IAM</div><div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">AVC</div><div style="padding:9px 14px; border-radius:999px; background:#fff; border:1.5px solid #ECE3D6; color:#5A4E42; font-size:13px; font-weight:600;">DAP</div></div></div>
+          </div>
+        </div>
+        <div style="position:absolute; left:0; right:0; bottom:0; padding:12px 18px 22px; background:linear-gradient(transparent, #FAF5EE 32%);">
+          <div onClick="{{ saveNovo }}" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#0F5750; color:#fff; padding:16px 0; border-radius:14px; font-size:15px; font-weight:700; cursor:pointer;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Salvar paciente
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ SYNC SHEET (overlay) ============ -->
+      <sc-if value="{{ syncOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; inset:0; z-index:20;">
+          <div onClick="{{ closeSync }}" style="position:absolute; inset:0; background:rgba(15,35,30,.5);"></div>
+          <div style="position:absolute; left:0; right:0; bottom:0; background:#FAF5EE; border-radius:30px 30px 42px 42px; padding:14px 22px 28px;">
+            <div style="width:42px; height:5px; border-radius:3px; background:#E2D8C8; margin:0 auto 18px;"></div>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div style="width:46px; height:46px; border-radius:14px; background:#EDF3F0; display:flex; align-items:center; justify-content:center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8M20 4v4h-4" stroke="#0F5750" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16M4 20v-4h4" stroke="#0F5750" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div style="font-family:'Newsreader',serif; font-size:21px; font-weight:600; color:#23170E;">Sincronizar dados</div>
+                <div style="display:flex; align-items:center; gap:6px; font-size:12.5px; color:#1B7A3E; font-weight:600; margin-top:2px;"><span style="width:8px; height:8px; border-radius:50%; background:#16A34A;"></span>Online · conexão disponível</div>
+              </div>
+            </div>
+            <div style="background:#fff; border:1.5px solid #ECE3D6; border-radius:16px; padding:6px 4px; margin-top:18px;">
+              <div style="display:flex; align-items:center; gap:12px; padding:12px 13px; border-bottom:1px solid #F2EADE;">
+                <div style="width:34px; height:34px; border-radius:10px; background:#FBEDEC; color:#C7322B; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; font-family:'Newsreader',serif;">MS</div>
+                <div style="flex:1;"><div style="font-size:14px; font-weight:600; color:#23170E;">Maria Silva</div><div style="font-size:12px; color:#9A8C7C;">Nova visita · hoje 14:32</div></div>
+                <span style="{{ syncBadge }}">{{ syncBadgeText }}</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px; padding:12px 13px; border-bottom:1px solid #F2EADE;">
+                <div style="width:34px; height:34px; border-radius:10px; background:#FBF3DF; color:#9A6B00; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; font-family:'Newsreader',serif;">JN</div>
+                <div style="flex:1;"><div style="font-size:14px; font-weight:600; color:#23170E;">José Nunes</div><div style="font-size:12px; color:#9A8C7C;">Nova visita · ontem 16:10</div></div>
+                <span style="{{ syncBadge }}">{{ syncBadgeText }}</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px; padding:12px 13px;">
+                <div style="width:34px; height:34px; border-radius:10px; background:#EDF3F0; color:#0F5750; display:flex; align-items:center; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0F5750" stroke-width="2" stroke-linecap="round"/></svg></div>
+                <div style="flex:1;"><div style="font-size:14px; font-weight:600; color:#23170E;">Paciente novo</div><div style="font-size:12px; color:#9A8C7C;">Cadastro · hoje 11:05</div></div>
+                <span style="{{ syncBadge }}">{{ syncBadgeText }}</span>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:14px; padding:0 4px;">
+              <span style="font-size:13px; color:#5A4E42;">{{ syncSummary }}</span>
+              <span style="font-size:12px; color:#9A8C7C;">Última: hoje 09:12</span>
+            </div>
+            <div onClick="{{ doSync }}" style="display:flex; align-items:center; justify-content:center; gap:9px; color:#fff; padding:16px 0; border-radius:14px; font-size:15px; font-weight:700; margin-top:14px; cursor:pointer; background:{{ syncBtnBg }};">
+              {{ syncBtnText }}
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ TOAST ============ -->
+      <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; left:18px; right:18px; bottom:96px; z-index:30; display:flex; align-items:center; gap:10px; background:#23170E; color:#fff; padding:14px 16px; border-radius:14px; box-shadow:0 16px 30px -12px rgba(0,0,0,.5);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#7FE0CE" stroke-width="1.8"/><path d="M8.5 12.5l2.3 2.3 4.7-5" stroke="#7FE0CE" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:13.5px; font-weight:600;">{{ toast }}</span>
+        </div>
+      </sc-if>
+
+    </div>
+  </div>
+</div>
+
+<template id="__bundler_thumbnail" data-bg-color="#0F5750">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0F5750"/>
+    <g transform="translate(600 400)">
+      <rect x="-130" y="-130" width="260" height="260" rx="70" fill="rgba(255,255,255,0.12)"/>
+      <path d="M0 96 C-95 36 -150 -20 -150 -70 C-150 -118 -116 -148 -78 -148 C-48 -148 -22 -128 0 -96 C22 -128 48 -148 78 -148 C116 -148 150 -118 150 -70 C150 -36 130 -8 104 22" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M-118 8 H-44 L-12 -56 L40 72 L74 -12 H120" fill="none" stroke="#7FE0CE" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </svg>
+</template></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 460, &quot;height&quot;: 900}}">
+class Component extends DCLogic {
+  state = {
+    screen: 'login', filter: 'todos', search: '', selected: 'ms',
+    evolTab: 'grafico', syncOpen: false, syncState: 'idle', toast: '',
+    form: { peso: '72.5', altura: '158', cintura: '94', paSist: '184', paDias: '121', fc: '78', glic: '132', ldl: '196', hba1c: '6.9' }
+  };
+
+  patients = [
+    { id: 'tf', initials: 'TF', name: 'Tiago Feitosa', age: 61, sex: 'Masculino', risk: 'vermelho', visit: 'Visita hoje', alert: 'PA 184/121 mmHg — crítico' },
+    { id: 'ms', initials: 'MS', name: 'Maria Silva', age: 58, sex: 'Feminino', risk: 'vermelho', visit: '3 dias atrasado', alert: 'Glicemia 268 mg/dL — crítico' },
+    { id: 'jn', initials: 'JN', name: 'José Nunes', age: 67, sex: 'Masculino', risk: 'amarelo', visit: '1 dia atrasado', alert: 'LDL 196 mg/dL — atenção' },
+    { id: 'lc', initials: 'LC', name: 'Lucas Cavalcante', age: 54, sex: 'Masculino', risk: 'amarelo', visit: '2 dias p/ visita', alert: null },
+    { id: 'cn', initials: 'CN', name: 'Carla Nascimento', age: 49, sex: 'Feminino', risk: 'verde', visit: '4 dias p/ visita', alert: null }
+  ];
+
+  themes = {
+    vermelho: { dot: '#DC2626', textColor: '#C7322B', avatarBg: '#FBEDEC', riskLabel: 'Vermelho', visitBg: '#FBEDEC', visitColor: '#C7322B', alertBg: '#FCF1F0', alertBorder: '#F6DAD7', alertColor: '#9B3A33', alertStrong: '#C7322B' },
+    amarelo: { dot: '#E6A100', textColor: '#9A6B00', avatarBg: '#FBF3DF', riskLabel: 'Amarelo', visitBg: '#FBF3DF', visitColor: '#9A6B00', alertBg: '#FCF7EA', alertBorder: '#F0E3C2', alertColor: '#806012', alertStrong: '#C68A00' },
+    verde: { dot: '#16A34A', textColor: '#1B7A3E', avatarBg: '#E6F4EA', riskLabel: 'Verde', visitBg: '#F2EAE0', visitColor: '#9A8C7C', alertBg: '', alertBorder: '', alertColor: '', alertStrong: '' }
+  };
+
+  go(s) { this.setState({ screen: s, syncOpen: false }); }
+  setFilter(f) { this.setState({ filter: f }); }
+  onSearch(e) { this.setState({ search: e.target.value }); }
+  onField(k, e) { const v = e.target.value; this.setState(s => ({ form: Object.assign({}, s.form, { [k]: v }) })); }
+  num(v) { const n = parseFloat(String(v).replace(',', '.')); return isNaN(n) ? null : n; }
+  canSave() { return Object.values(this.state.form).some(v => String(v).trim() !== ''); }
+  fmtImc() {
+    const p = this.num(this.state.form.peso), a = this.num(this.state.form.altura);
+    if (!p || !a) return '—';
+    return (p / Math.pow(a / 100, 2)).toFixed(1).replace('.', ',');
+  }
+  save() {
+    if (!this.canSave()) return;
+    this.setState({ screen: 'lista', toast: 'Visita salva localmente · pendente de sincronização' });
+    clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toast: '' }), 2800);
+  }
+  saveNovo() {
+    this.setState({ screen: 'lista', toast: 'Paciente salvo no dataset local' });
+    clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toast: '' }), 2800);
+  }
+  doSync() {
+    if (this.state.syncState === 'syncing') return;
+    this.setState({ syncState: 'syncing' });
+    setTimeout(() => this.setState({ syncState: 'done' }), 1500);
+  }
+  openSync() { this.setState({ syncOpen: true, syncState: 'idle' }); }
+
+  chipStyle(active, dot) {
+    const base = 'display:flex; align-items:center; gap:6px; padding:8px 14px; border-radius:999px; font-size:13px; cursor:pointer; ';
+    return active
+      ? base + 'background:#fff; color:#0F5750; font-weight:700;'
+      : base + 'background:rgba(255,255,255,.12); color:#E6F2EF; font-weight:600;';
+  }
+  tabStyle(active) {
+    const base = 'flex:1; text-align:center; padding:8px 0; border-radius:8px; font-size:13px; cursor:pointer; ';
+    return active ? base + 'background:#fff; color:#0F5750; font-weight:700;' : base + 'color:#D8F0EB; font-weight:600;';
+  }
+  fieldStyle(flag, type) {
+    if (!flag) return { bg: '#FAF7F2', border: '#ECE3D6', color: '#23170E' };
+    if (type === 'amber') return { bg: '#FFFBF0', border: '#E6CE94', color: '#9A6B00' };
+    return { bg: '#FFF5F4', border: '#E9A39C', color: '#C7322B' };
+  }
+
+  renderVals() {
+    const st = this.state;
+    const f = st.filter;
+    const q = st.search.trim().toLowerCase();
+    const visible = this.patients
+      .filter(p => (f === 'todos' || p.risk === f) && (!q || p.name.toLowerCase().includes(q)))
+      .map(p => {
+        const th = this.themes[p.risk];
+        return Object.assign({}, p, th, {
+          ageSex: p.age + ' anos · ' + p.sex,
+          hasAlert: !!p.alert,
+          noAlert: !p.alert,
+          alertText: p.alert || '',
+          onTap: () => this.setState({ selected: p.id, screen: 'perfil', syncOpen: false }),
+          onVisita: (e) => { if (e) e.stopPropagation(); this.setState({ selected: p.id, screen: 'visita', syncOpen: false }); },
+          onEvol: (e) => { if (e) e.stopPropagation(); this.setState({ selected: p.id, screen: 'evolucao', syncOpen: false }); }
+        });
+      });
+
+    const ps = this.num(st.form.paSist), pd = this.num(st.form.paDias), gl = this.num(st.form.glic), ld = this.num(st.form.ldl);
+    const paRed = (ps !== null && (ps >= 180 || ps < 90)) || (pd !== null && (pd >= 120 || pd < 60));
+    const glRed = gl !== null && (gl >= 250 || gl < 70);
+    const ldAmber = ld !== null && ld >= 190;
+    const paF = this.fieldStyle(paRed, 'red');
+    const glF = this.fieldStyle(glRed, 'red');
+    const ldF = this.fieldStyle(ldAmber, 'amber');
+
+    const sel = this.patients.find(p => p.id === st.selected) || this.patients[0];
+    const selTh = this.themes[sel.risk];
+    const canSave = this.canSave();
+
+    const syncing = st.syncState === 'syncing';
+    const done = st.syncState === 'done';
+    const badgeBase = 'font-size:11px; font-weight:700; padding:3px 9px; border-radius:7px; ';
+
+    return {
+      isLogin: st.screen === 'login',
+      isLista: st.screen === 'lista',
+      isPerfil: st.screen === 'perfil',
+      isVisita: st.screen === 'visita',
+      isEvol: st.screen === 'evolucao',
+      isNovo: st.screen === 'novo',
+
+      goLista: () => this.go('lista'),
+      goPerfil: () => this.setState({ screen: 'perfil', syncOpen: false }),
+      goVisita: () => this.setState({ screen: 'visita', syncOpen: false }),
+      goEvolucao: () => this.setState({ screen: 'evolucao', syncOpen: false }),
+      goNovo: () => this.go('novo'),
+
+      visible, count: visible.length, empty: visible.length === 0,
+      search: st.search,
+      onSearch: (e) => this.onSearch(e),
+      filterTodos: () => this.setFilter('todos'),
+      filterVerde: () => this.setFilter('verde'),
+      filterAmarelo: () => this.setFilter('amarelo'),
+      filterVermelho: () => this.setFilter('vermelho'),
+      chipTodos: this.chipStyle(f === 'todos'),
+      chipVerde: this.chipStyle(f === 'verde'),
+      chipAmarelo: this.chipStyle(f === 'amarelo'),
+      chipVermelho: this.chipStyle(f === 'vermelho'),
+
+      selName: sel.name, selInitials: sel.initials, selAgeSex: sel.age + ' anos · ' + sel.sex,
+      selVisit: sel.visit, selRiskLabel: selTh.riskLabel, selDot: selTh.dot, selText: selTh.textColor,
+
+      form: st.form, imc: this.fmtImc(),
+      onPeso: (e) => this.onField('peso', e), onAltura: (e) => this.onField('altura', e), onCintura: (e) => this.onField('cintura', e),
+      onPaSist: (e) => this.onField('paSist', e), onPaDias: (e) => this.onField('paDias', e),
+      onFc: (e) => this.onField('fc', e), onGlic: (e) => this.onField('glic', e),
+      onLdl: (e) => this.onField('ldl', e), onHba1c: (e) => this.onField('hba1c', e),
+      paRed, glRed, ldAmber,
+      paFieldBg: paF.bg, paFieldBorder: paF.border, paFieldColor: paF.color,
+      glFieldBg: glF.bg, glFieldBorder: glF.border, glFieldColor: glF.color,
+      ldFieldBg: ldF.bg, ldFieldBorder: ldF.border, ldFieldColor: ldF.color,
+      canSave,
+      saveBg: canSave ? '#0F5750' : '#C9C0B2', saveColor: '#ffffff',
+      save: () => this.save(),
+      saveNovo: () => this.saveNovo(),
+
+      isGrafico: st.evolTab === 'grafico', isTabela: st.evolTab === 'tabela',
+      toggleGrafico: () => this.setState({ evolTab: 'grafico' }),
+      toggleTabela: () => this.setState({ evolTab: 'tabela' }),
+      tabGrafico: this.tabStyle(st.evolTab === 'grafico'),
+      tabTabela: this.tabStyle(st.evolTab === 'tabela'),
+
+      syncOpen: st.syncOpen,
+      openSync: () => this.openSync(),
+      closeSync: () => this.setState({ syncOpen: false }),
+      doSync: () => this.doSync(),
+      syncBadge: badgeBase + (done ? 'color:#1B7A3E; background:#E6F4EA;' : 'color:#9A6B00; background:#FBF3DF;'),
+      syncBadgeText: done ? 'enviado' : 'pendente',
+      syncSummary: done ? '3 registros sincronizados' : '3 registros pendentes',
+      syncBtnBg: syncing ? '#C9C0B2' : (done ? '#1B7A3E' : '#E2725B'),
+      syncBtnText: syncing ? 'Sincronizando…' : (done ? 'Concluído ✓' : 'Sincronizar agora'),
+
+      toast: st.toast, hasToast: !!st.toast
+    };
+  }
+}
+</script>
+</body>
+</html>
