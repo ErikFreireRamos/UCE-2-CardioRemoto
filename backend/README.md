@@ -7,6 +7,19 @@ pacientes cardiovasculares por Agentes de Saúde (AS), com cliente mobile **offl
 
 ---
 
+## Como executar :
+
+Abra 2 terminais
+cd backend
+
+> > docker compose up --build
+
+no Segundo:
+cd frontend
+
+> > npm install
+> > npm run dev
+
 ## Subir tudo com Docker (recomendado — sem Postgres na máquina)
 
 ```bash
@@ -46,13 +59,13 @@ npm run dev
 
 ## Scripts
 
-| Script | Ação |
-| --- | --- |
-| `npm run dev` | API em watch (tsx) |
-| `npm run build` / `start` | Compila / executa `dist` |
-| `npm test` | Testes (unitários do domínio clínico + integração) |
-| `npm run migrate` / `migrate:deploy` | Migrations (dev / produção) |
-| `npm run seed` | Popula pacientes + AS |
+| Script                               | Ação                                               |
+| ------------------------------------ | -------------------------------------------------- |
+| `npm run dev`                        | API em watch (tsx)                                 |
+| `npm run build` / `start`            | Compila / executa `dist`                           |
+| `npm test`                           | Testes (unitários do domínio clínico + integração) |
+| `npm run migrate` / `migrate:deploy` | Migrations (dev / produção)                        |
+| `npm run seed`                       | Popula pacientes + AS                              |
 
 ## Testes
 
@@ -73,18 +86,18 @@ alternativos/exceção — **login bloqueado (5/15min)**, **CPF duplicado (409)*
 
 ## Endpoints
 
-| Método | Rota | UC / notas |
-| --- | --- | --- |
-| POST | `/auth/login` | UC01. 5 tentativas → bloqueio 15 min (423) |
-| POST | `/auth/refresh` · `/auth/logout` | Rotação / revogação de refresh token |
-| POST | `/patients` | UC02. CPF duplicado → **409**; evento CV exige data se aterosclerótico |
-| GET | `/patients?risk=&sort=visitPriority&search=` | UC03/04. Cada item: risco, próxima visita, status, alerta ativo |
-| GET | `/patients/:id` | Perfil + controle atual (PA/HbA1c/LDL) + fatores de risco |
-| POST | `/patients/:id/visits` | UC05. ≥1 campo (**422**); IMC no servidor; alertas; recalcula risco |
-| GET | `/patients/:id/visits` | UC06 (tabela) |
-| GET | `/patients/:id/evolution?metrics=pa,glicemia,ldl,hba1c,peso` | UC06 (gráfico) |
-| POST | `/sync` | UC07. Lote offline idempotente, LWW, falha parcial `{synced, failed}` |
-| GET | `/sync/pull?since=<ISO>` | Mudanças do servidor desde um timestamp |
+| Método | Rota                                                         | UC / notas                                                             |
+| ------ | ------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| POST   | `/auth/login`                                                | UC01. 5 tentativas → bloqueio 15 min (423)                             |
+| POST   | `/auth/refresh` · `/auth/logout`                             | Rotação / revogação de refresh token                                   |
+| POST   | `/patients`                                                  | UC02. CPF duplicado → **409**; evento CV exige data se aterosclerótico |
+| GET    | `/patients?risk=&sort=visitPriority&search=`                 | UC03/04. Cada item: risco, próxima visita, status, alerta ativo        |
+| GET    | `/patients/:id`                                              | Perfil + controle atual (PA/HbA1c/LDL) + fatores de risco              |
+| POST   | `/patients/:id/visits`                                       | UC05. ≥1 campo (**422**); IMC no servidor; alertas; recalcula risco    |
+| GET    | `/patients/:id/visits`                                       | UC06 (tabela)                                                          |
+| GET    | `/patients/:id/evolution?metrics=pa,glicemia,ldl,hba1c,peso` | UC06 (gráfico)                                                         |
+| POST   | `/sync`                                                      | UC07. Lote offline idempotente, LWW, falha parcial `{synced, failed}`  |
+| GET    | `/sync/pull?since=<ISO>`                                     | Mudanças do servidor desde um timestamp                                |
 
 Erros sempre no formato `{ error: { code, message, details } }`.
 
