@@ -24,11 +24,11 @@ export function Sparkline({ s }: { s: EvoSeries }) {
             <span style={{ width: 10, height: 10, borderRadius: 3, background: s.color }} />
             <span style={{ fontSize: 14, fontWeight: 700, color: colors.text }}>{s.label}</span>
           </div>
-          <div style={{ fontSize: 11.5, color: colors.textMuted, marginTop: 3 }}>{s.unit}{s.goalText ? ` · ${s.goalText}` : ''}</div>
+          <div style={{ fontSize: 14, color: colors.textMuted, marginTop: 3 }}>{s.unit}{s.goalText ? ` · ${s.goalText}` : ''}</div>
         </div>
         <div style={{ textAlign: 'right' }}>
           <div style={{ fontSize: 21, fontWeight: 800, color: statusTone.color, lineHeight: 1 }}>{s.latest?.display ?? '—'}</div>
-          {statusTone.label && <span style={{ display: 'inline-block', marginTop: 5, fontSize: 10, fontWeight: 700, color: statusTone.color, background: statusTone.bg, padding: '3px 8px', borderRadius: 6 }}>{statusTone.label}</span>}
+          {statusTone.label && <span style={{ display: 'inline-block', marginTop: 5, fontSize: 14, fontWeight: 700, color: statusTone.color, background: statusTone.bg, padding: '3px 8px', borderRadius: 6 }}>{statusTone.label}</span>}
         </div>
       </div>
       <svg width="100%" height="116" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ marginTop: 8 }}>

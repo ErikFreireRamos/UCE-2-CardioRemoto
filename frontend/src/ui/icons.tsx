@@ -52,6 +52,13 @@ export const WifiOff = ({ size = 18, color = '#FFB454' }: IconProps) => (
   <svg style={base(size)} viewBox="0 0 24 24" fill="none"><path d="M3 15a4 4 0 0 1 4-4 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 19 15" stroke={color} strokeWidth="1.8" strokeLinecap="round" /><path d="M4 19 19 4" stroke={color} strokeWidth="1.8" strokeLinecap="round" /></svg>
 );
 
+export const Download = ({ size = 18, color = '#0F5750' }: IconProps) => (
+  <svg style={base(size)} viewBox="0 0 24 24" fill="none">
+    <path d="M12 3v11m0 0l-4-4m4 4l4-4" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+  </svg>
+);
+
 export const Lock = ({ size = 24, color = '#C7322B' }: IconProps) => (
   <svg style={base(size)} viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke={color} strokeWidth="1.8" /><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke={color} strokeWidth="1.8" strokeLinecap="round" /></svg>
 );

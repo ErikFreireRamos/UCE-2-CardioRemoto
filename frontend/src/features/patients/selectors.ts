@@ -54,8 +54,10 @@ function buildItem(p: LocalPatient, visits: LocalVisit[], now: Date): PatientLis
 }
 
 export type RiskFilter = 'todos' | RiskLevel;
+/** UC04: o agente seleciona a visualização por prioridade de visita (padrão) ou por nome. */
+export type PatientSort = 'prioridade' | 'nome';
 
-export function usePatientList(filter: RiskFilter, search: string): PatientListItem[] | undefined {
+export function usePatientList(filter: RiskFilter, search: string, sort: PatientSort = 'prioridade'): PatientListItem[] | undefined {
   return useLiveQuery(async () => {
     const now = new Date();
     const [patients, visits] = await Promise.all([db.patients.toArray(), db.visits.toArray()]);
@@ -69,6 +71,10 @@ export function usePatientList(filter: RiskFilter, search: string): PatientListI
       items = items.filter((i) => i.socialName.toLowerCase().includes(q) || (digits && i.identifier.includes(digits)));
     }
 
+    if (sort === 'nome') {
+      items.sort((a, b) => a.socialName.localeCompare(b.socialName));
+      return items;
+    }
     // Ordena por prioridade de visita: sem-visita/atrasados primeiro.
     items.sort((a, b) => {
       const ka = visitPriorityKey(a.lastVisitAt, a.riskLevel, now);
@@ -77,7 +83,7 @@ export function usePatientList(filter: RiskFilter, search: string): PatientListI
       return a.socialName.localeCompare(b.socialName);
     });
     return items;
-  }, [filter, search]);
+  }, [filter, search, sort]);
 }
 
 export interface PatientProfile extends PatientListItem {

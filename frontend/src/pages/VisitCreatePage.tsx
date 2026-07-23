@@ -96,7 +96,7 @@ export function VisitCreatePage() {
           {alertFields.has('capillaryGlycemia') && <InlineAlert variant="red">Alerta vermelho — glicemia ≥250 ou &lt;70 mg/dL</InlineAlert>}
         </Group>
 
-        <Group title="Exames laboratoriais" right={<button onClick={() => setShowLabs((s) => !s)} style={{ fontSize: 12, fontWeight: 700, color: colors.teal, minHeight: 0 }}>{showLabs ? 'Ver menos' : 'Ver todos (14)'}</button>}>
+        <Group title="Exames laboratoriais" right={<button onClick={() => setShowLabs((s) => !s)} style={{ fontSize: 14, fontWeight: 700, color: colors.teal, padding: '0 4px' }}>{showLabs ? 'Ver menos' : `Ver todos (${labs.length + 2})`}</button>}>
           <Row>
             <NumField label="LDL" value={form.ldl} onChange={set('ldl')} tone={alertVariant('ldl')} />
             <NumField label="HbA1c (%)" value={form.hba1c} onChange={set('hba1c')} />
@@ -138,7 +138,7 @@ function Row({ children }: { children: React.ReactNode }) {
   return <div style={{ display: 'flex', gap: 10 }}>{children}</div>;
 }
 function Lbl({ children }: { children: React.ReactNode }) {
-  return <div style={{ fontSize: 11, fontWeight: 700, color: colors.textMuted, marginBottom: 5 }}>{children}</div>;
+  return <div style={{ fontSize: 14, fontWeight: 700, color: colors.textMuted, marginBottom: 5 }}>{children}</div>;
 }
 function NumField({ label, value, onChange, tone = 'normal' }: { label: string; value?: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; tone?: 'normal' | 'red' | 'amber' }) {
   const t = fieldTone[tone];

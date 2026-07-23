@@ -29,11 +29,10 @@ export function usePendingCount(): number {
 
 export type SyncStatus = 'idle' | 'syncing' | 'done' | 'partial' | 'offline' | 'error';
 
-/** Hook de sincronização: ativa (syncNow) + passiva (ao reconectar). */
+/** Hook da sincronização ATIVA (UC07): acionada pelo agente de saúde, com estado para a UI. */
 export function useSync() {
   const online = useOnlineStatus();
   const pending = usePendingCount();
-  const isAuthenticated = useAuth((s) => !!s.accessToken);
   const [status, setStatus] = useState<SyncStatus>('idle');
   const [lastResult, setLastResult] = useState<{ synced: number; failed: number } | null>(null);
   const lastSyncAt = useLiveQuery(() => getMeta('lastSyncAt'), [], undefined);
@@ -49,17 +48,33 @@ export function useSync() {
       setLastResult(res);
       setStatus(res.failed > 0 ? 'partial' : 'done');
     } catch (err) {
+      // A UI mostra a mensagem do UC07; o erro real vai para o console, senão um defeito interno
+      // fica indistinguível de uma falha de rede na hora de diagnosticar.
+      console.error('Falha na sincronização', err);
       setStatus(err instanceof ApiError && err.isNetwork ? 'offline' : 'error');
     }
   }, []);
 
-  // Passiva: ao reconectar com pendentes, tenta sincronizar.
-  useEffect(() => {
-    if (online && isAuthenticated && pending > 0) {
-      void syncNow();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [online]);
-
   return { status, online, pending, lastResult, lastSyncAt, syncNow, setStatus };
+}
+
+/**
+ * Sincronização PASSIVA (RNF001) — precisa ficar montada globalmente, não dentro da folha de
+ * sincronização. Dispara sozinha sempre que houver pendências e o dispositivo estiver online:
+ *   - ao reconectar (mudança de `online`);
+ *   - logo após salvar paciente/visita estando online (UC05 passo 4), pois `pending` muda.
+ * `runSync` é serializada, então nunca concorre com a sincronização manual. Uma falha não entra
+ * em laço: o efeito só roda de novo quando online/pendências mudam de fato.
+ */
+export function useAutoSync(): void {
+  const online = useOnlineStatus();
+  const pending = usePendingCount();
+  const isAuthenticated = useAuth((s) => !!s.accessToken);
+
+  useEffect(() => {
+    if (!online || !isAuthenticated || pending === 0) return;
+    void runSync().catch(() => {
+      // Offline/falha de rede: os dados permanecem no dataset local para nova tentativa.
+    });
+  }, [online, pending, isAuthenticated]);
 }

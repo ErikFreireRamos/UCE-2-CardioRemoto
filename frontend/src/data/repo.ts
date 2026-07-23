@@ -1,9 +1,10 @@
 import { db } from './db';
+import { newId as makeId } from '../lib/uuid';
 import type { LocalPatient, LocalVisit } from './schema';
 import type { Measurements } from '../clinical';
 
 export function newId(): string {
-  return crypto.randomUUID();
+  return makeId();
 }
 
 export type NewPatientInput = Omit<LocalPatient, 'id' | 'createdAt' | 'updatedAt' | 'syncState'>;

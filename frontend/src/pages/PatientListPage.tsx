@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { colors, fonts, risk as riskColors, shadow } from '../ui/tokens';
 import { Avatar, Chip, InlineAlert, RiskBadge, VisitStatusBadge } from '../ui/components';
 import { Plus, SyncIcon } from '../ui/icons';
-import { usePatientList, type RiskFilter } from '../features/patients/selectors';
+import { usePatientList, type PatientSort, type RiskFilter } from '../features/patients/selectors';
 import { useAuth } from '../features/auth/useAuth';
 import { SyncSheet } from '../features/sync/SyncSheet';
 import { usePendingCount } from '../features/sync/hooks';
@@ -21,8 +21,9 @@ export function PatientListPage() {
   const [filter, setFilter] = useState<RiskFilter>('todos');
   const [search, setSearch] = useState('');
   const [syncOpen, setSyncOpen] = useState(false);
+  const [sort, setSort] = useState<PatientSort>('prioridade');
   const pending = usePendingCount();
-  const items = usePatientList(filter, search);
+  const items = usePatientList(filter, search, sort);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
@@ -30,11 +31,11 @@ export function PatientListPage() {
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
           <div>
             <h1 style={{ fontFamily: fonts.serif, fontSize: 29, fontWeight: 500 }}>Pacientes</h1>
-            <div style={{ fontSize: 13, color: colors.headerSub, fontWeight: 500, marginTop: 2 }}>
+            <div style={{ fontSize: 14, color: colors.headerSub, fontWeight: 500, marginTop: 2 }}>
               {user?.name ?? 'Agente'} · ACS
             </div>
           </div>
-          <button onClick={() => setSyncOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,.14)', color: '#C8EBE4', padding: '8px 12px', borderRadius: 999, fontSize: 12, fontWeight: 700, minHeight: 0 }}>
+          <button onClick={() => setSyncOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,.14)', color: '#C8EBE4', padding: '8px 12px', borderRadius: 999, fontSize: 14, fontWeight: 700 }}>
             <SyncIcon size={15} color="#C8EBE4" />
             Sincronizar{pending > 0 ? ` (${pending})` : ''}
           </button>
@@ -52,8 +53,17 @@ export function PatientListPage() {
           <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Buscar por nome ou CPF…" style={{ flex: 1, border: 'none', outline: 'none', background: 'transparent', fontSize: 14, color: colors.text }} />
         </div>
       </div>
-      <div style={{ padding: '12px 22px 8px', fontSize: 12, fontWeight: 600, color: colors.textMuted }}>
-        {items?.length ?? 0} · ordenado por <span style={{ color: colors.teal, fontWeight: 700 }}>prioridade de visita</span>
+      {/* UC04: a ordenação por prioridade de visita é uma função selecionável (e o padrão). */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 18px 8px' }}>
+        <span style={{ fontSize: 14, fontWeight: 600, color: colors.textMuted, whiteSpace: 'nowrap' }}>{items?.length ?? 0} · ordenar por</span>
+        <div style={{ display: 'flex', flex: 1, background: colors.sand, borderRadius: 11, padding: 3, gap: 3 }}>
+          {([['prioridade', 'Prioridade de visita'], ['nome', 'Nome']] as const).map(([key, label]) => (
+            <button key={key} onClick={() => setSort(key)} aria-pressed={sort === key} style={{ flex: 1, padding: '8px 4px', borderRadius: 9, fontSize: 14, fontWeight: sort === key ? 700 : 600,
+              background: sort === key ? '#fff' : 'transparent', color: sort === key ? colors.teal : colors.textSoft }}>
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div style={{ padding: '0 18px 96px', display: 'flex', flexDirection: 'column', gap: 11 }}>
@@ -63,27 +73,28 @@ export function PatientListPage() {
               <Avatar initials={p.initials} riskKey={p.riskLevel} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontFamily: fonts.serif, fontSize: 19, fontWeight: 600, color: colors.text }}>{p.socialName}</div>
-                <div style={{ fontSize: 12.5, color: colors.textMuted, fontWeight: 500 }}>{p.age} anos · {p.biologicalSex === 'F' ? 'Feminino' : 'Masculino'}</div>
+                <div style={{ fontSize: 14, color: colors.textMuted, fontWeight: 500 }}>{p.age} anos · {p.biologicalSex === 'F' ? 'Feminino' : 'Masculino'}</div>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}>
                 <RiskBadge riskKey={p.riskLevel} />
                 <VisitStatusBadge status={p.visitStatus} riskKey={p.riskLevel} />
               </div>
             </div>
-            {p.activeAlert ? (
+            {/* O alerta nunca substitui as ações: as duas funções acionáveis acompanham TODO
+                paciente da lista (história do usuário / RF005 + RF006). */}
+            {p.activeAlert && (
               <div style={{ marginTop: 12 }}>
                 <InlineAlert variant={p.riskLevel === 'amarelo' ? 'amber' : 'red'}>{p.activeAlert}</InlineAlert>
               </div>
-            ) : (
-              <div style={{ display: 'flex', gap: 9, marginTop: 12 }}>
-                <button onClick={(e) => { e.stopPropagation(); navigate(`/patients/${p.id}/visits/new`); }} style={{ flex: 1, textAlign: 'center', padding: '10px 0', borderRadius: 12, background: colors.teal, color: '#fff', fontSize: 13, fontWeight: 700 }}>+ Nova visita</button>
-                <button onClick={(e) => { e.stopPropagation(); navigate(`/patients/${p.id}/evolution`); }} style={{ flex: 1, textAlign: 'center', padding: '10px 0', borderRadius: 12, background: colors.sand, color: colors.teal, fontSize: 13, fontWeight: 700 }}>Evolução</button>
-              </div>
             )}
+            <div style={{ display: 'flex', gap: 9, marginTop: 12 }}>
+              <button onClick={(e) => { e.stopPropagation(); navigate(`/patients/${p.id}/visits/new`); }} style={{ flex: 1, textAlign: 'center', padding: '11px 0', borderRadius: 12, background: colors.teal, color: '#fff', fontSize: 14, fontWeight: 700 }}>+ Nova visita</button>
+              <button onClick={(e) => { e.stopPropagation(); navigate(`/patients/${p.id}/evolution`); }} style={{ flex: 1, textAlign: 'center', padding: '11px 0', borderRadius: 12, background: colors.sand, color: colors.teal, fontSize: 14, fontWeight: 700 }}>Evolução</button>
+            </div>
           </div>
         ))}
         {items && items.length === 0 && (
-          <div style={{ textAlign: 'center', color: colors.textMuted, fontSize: 13, padding: '30px 0' }}>Nenhum paciente encontrado.</div>
+          <div style={{ textAlign: 'center', color: colors.textMuted, fontSize: 14, padding: '30px 0' }}>Nenhum paciente encontrado.</div>
         )}
       </div>
 

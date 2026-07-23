@@ -24,6 +24,13 @@ export function GlobalStyles() {
       a { color: inherit; text-decoration: none; }
       .scr::-webkit-scrollbar { width: 0; height: 0; }
       .scr { scrollbar-width: none; }
+      /* Rolagem horizontal com barra sempre visível — sem ela, quem usa mouse não percebe
+         (nem alcança) o conteúdo que está fora da área. */
+      .hscroll { overflow-x: auto; scrollbar-width: thin; scrollbar-color: #C9BEAC transparent; }
+      .hscroll::-webkit-scrollbar { height: 10px; }
+      .hscroll::-webkit-scrollbar-track { background: transparent; }
+      .hscroll::-webkit-scrollbar-thumb { background: #C9BEAC; border-radius: 999px; border: 3px solid #fff; }
+      .hscroll:focus-visible { outline: 2px solid ${colors.teal}; outline-offset: 2px; }
       h1, h2, h3 { font-family: ${fonts.serif}; font-weight: 600; margin: 0; }
       @media (prefers-reduced-motion: no-preference) {
         .fade-in { animation: fade .18s ease both; }

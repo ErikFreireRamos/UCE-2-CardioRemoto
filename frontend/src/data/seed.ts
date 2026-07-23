@@ -1,4 +1,5 @@
 import { db, getMeta, setMeta } from './db';
+import { newId } from '../lib/uuid';
 import type { LocalPatient, LocalVisit } from './schema';
 import { PERIODICITY_MONTHS, type Measurements, type RiskLevel } from '../clinical';
 
@@ -60,7 +61,7 @@ export async function seedIfEmpty(): Promise<void> {
   const ts = iso(now);
 
   for (const s of specs) {
-    const id = crypto.randomUUID();
+    const id = newId();
     patients.push({
       id, identifier: cpf(s.identifier), socialName: s.socialName, birthDate: iso(new Date(`${s.birthDate}T00:00:00Z`)),
       biologicalSex: s.sex, smokingStatus: s.smoking, physicalActivity: s.activity, usesStatin: s.statin,
@@ -70,7 +71,7 @@ export async function seedIfEmpty(): Promise<void> {
     const mostRecent = addMonths(addDays(now, s.d), -PERIODICITY_MONTHS[s.risk]);
     for (const v of s.visits) {
       const collectedAt = iso(addDays(mostRecent, v.off));
-      visits.push({ id: crypto.randomUUID(), patientId: id, collectedAt, authorId: null, measurements: v.m, createdAt: collectedAt, updatedAt: collectedAt, syncState: 'synced' });
+      visits.push({ id: newId(), patientId: id, collectedAt, authorId: null, measurements: v.m, createdAt: collectedAt, updatedAt: collectedAt, syncState: 'synced' });
     }
   }
 

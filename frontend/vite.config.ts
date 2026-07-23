@@ -42,7 +42,9 @@ export default defineConfig({
       devOptions: { enabled: false },
     }),
   ],
-  server: { host: true, port: 5173 },
+  // `strictPort`: se a 5173 estiver ocupada, falhar em vez de subir noutra porta — a origem do
+  // dev server precisa bater com o `CORS_ORIGIN` do backend, senão o navegador bloqueia a API.
+  server: { host: true, port: 5173, strictPort: true },
   test: {
     globals: true,
     environment: 'jsdom',

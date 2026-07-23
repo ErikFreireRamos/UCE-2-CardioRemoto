@@ -3,6 +3,7 @@ import { GlobalStyles } from './ui/GlobalStyles';
 import { AppShell } from './ui/components';
 import { ToastProvider } from './features/ui/toast';
 import { GlobalStatusBar } from './features/sync/GlobalStatusBar';
+import { AutoSync } from './features/sync/AutoSync';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 import { LoginPage } from './pages/LoginPage';
 import { PatientListPage } from './pages/PatientListPage';
@@ -17,6 +18,7 @@ function Shell({ children }: { children: React.ReactNode }) {
   if (isLogin) return <>{children}</>;
   return (
     <AppShell>
+      <AutoSync />
       <GlobalStatusBar />
       {children}
     </AppShell>

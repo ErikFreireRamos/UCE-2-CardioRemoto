@@ -42,7 +42,7 @@ export function SyncSheet({ onClose }: { onClose: () => void }) {
         </div>
         <div style={{ flex: 1 }}>
           <div style={{ fontFamily: fonts.serif, fontSize: 21, fontWeight: 600, color: colors.text }}>Sincronizar dados</div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12.5, fontWeight: 600, marginTop: 2, color: online ? '#1B7A3E' : '#9A6B00' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 14, fontWeight: 600, marginTop: 2, color: online ? '#1B7A3E' : '#9A6B00' }}>
             <span style={{ width: 8, height: 8, borderRadius: '50%', background: online ? '#16A34A' : '#E6A100' }} />
             {online ? 'Online · conexão disponível' : 'Offline · sem conexão'}
           </div>
@@ -51,15 +51,15 @@ export function SyncSheet({ onClose }: { onClose: () => void }) {
 
       <div style={{ background: '#fff', border: `1.5px solid ${colors.fieldBorder}`, borderRadius: 16, marginTop: 18, maxHeight: 240, overflowY: 'auto' }}>
         {pendingItems.length === 0 && (
-          <div style={{ padding: 18, textAlign: 'center', color: colors.textMuted, fontSize: 13 }}>Nenhum registro pendente.</div>
+          <div style={{ padding: 18, textAlign: 'center', color: colors.textMuted, fontSize: 14 }}>Nenhum registro pendente.</div>
         )}
         {pendingItems.map((r, i) => (
           <div key={r.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 13px', borderBottom: i < pendingItems.length - 1 ? `1px solid ${colors.divider}` : 'none' }}>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 14, fontWeight: 600, color: colors.text }}>{r.title}</div>
-              <div style={{ fontSize: 12, color: colors.textMuted }}>{r.sub} · {formatTime(r.when)}</div>
+              <div style={{ fontSize: 14, color: colors.textMuted }}>{r.sub} · {formatTime(r.when)}</div>
             </div>
-            <span style={{ fontSize: 11, fontWeight: 700, padding: '3px 9px', borderRadius: 7, color: r.state === 'failed' ? riskColors.vermelho.text : '#9A6B00', background: r.state === 'failed' ? riskColors.vermelho.bg : '#FBF3DF' }}>
+            <span style={{ fontSize: 14, fontWeight: 700, padding: '3px 9px', borderRadius: 7, color: r.state === 'failed' ? riskColors.vermelho.text : '#9A6B00', background: r.state === 'failed' ? riskColors.vermelho.bg : '#FBF3DF' }}>
               {r.state === 'failed' ? 'falhou' : 'pendente'}
             </span>
           </div>
@@ -67,8 +67,8 @@ export function SyncSheet({ onClose }: { onClose: () => void }) {
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '14px 4px' }}>
-        <span style={{ fontSize: 13, color: colors.textSoft }}>{pending} registro(s) pendente(s)</span>
-        <span style={{ fontSize: 12, color: colors.textMuted }}>Última: {formatTime(lastSyncAt)}</span>
+        <span style={{ fontSize: 14, color: colors.textSoft }}>{pending} registro(s) pendente(s)</span>
+        <span style={{ fontSize: 14, color: colors.textMuted }}>Última: {formatTime(lastSyncAt)}</span>
       </div>
 
       {status === 'offline' && (
@@ -83,7 +83,18 @@ export function SyncSheet({ onClose }: { onClose: () => void }) {
       )}
       {status === 'done' && lastResult && (
         <div style={{ marginBottom: 12 }}>
-          <InlineAlert variant="info">{lastResult.synced} registro(s) sincronizado(s).</InlineAlert>
+          <InlineAlert variant="info">
+            {lastResult.synced} registro(s) sincronizado(s) às {formatTime(lastSyncAt)}.
+          </InlineAlert>
+        </div>
+      )}
+      {/* UC07 — fluxo de exceção "falha durante a sincronização". */}
+      {status === 'error' && (
+        <div style={{ marginBottom: 12 }}>
+          <InlineAlert variant="red">
+            Falha na comunicação com o banco central. Nenhum dado foi perdido: os registros
+            permanecem armazenados localmente para nova tentativa.
+          </InlineAlert>
         </div>
       )}
 

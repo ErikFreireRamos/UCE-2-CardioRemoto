@@ -98,3 +98,4 @@ breakpoints.
   local.
 - Gráfico de evolução em **SVG inline** (escala real por métrica + linha de meta), sem biblioteca de
   charting.
+  1

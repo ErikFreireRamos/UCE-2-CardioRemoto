@@ -1,11 +1,12 @@
 import { db, getMeta, setMeta } from '../../data/db';
+import { newId } from '../../lib/uuid';
 import { normalizeForSync } from './mappers';
 import { syncPull, syncPush, type SyncRecord } from '../../api/endpoints';
 
 async function getDeviceId(): Promise<string> {
   let id = await getMeta('deviceId');
   if (!id) {
-    id = crypto.randomUUID();
+    id = newId();
     await setMeta('deviceId', id);
   }
   return id;
@@ -16,11 +17,22 @@ export interface SyncOutcome {
   failed: number;
 }
 
+/** Uma única sincronização por vez (manual e passiva compartilham a mesma execução). */
+let inFlight: Promise<SyncOutcome> | null = null;
+
+export function runSync(): Promise<SyncOutcome> {
+  if (inFlight) return inFlight;
+  inFlight = doSync().finally(() => {
+    inFlight = null;
+  });
+  return inFlight;
+}
+
 /**
  * Envia os pendentes do outbox (idempotente por id), aplica o status parcial retornado pela API
  * (nunca perde dados locais) e depois puxa as mudanças do servidor.
  */
-export async function runSync(): Promise<SyncOutcome> {
+async function doSync(): Promise<SyncOutcome> {
   const deviceId = await getDeviceId();
   const outbox = await db.outbox.orderBy('createdAt').toArray();
 
